@@ -1,0 +1,32 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Toaster } from 'react-hot-toast';
+import App from 'components/App';
+import AuthProvider from 'context/AuthProvider';
+import Provider from 'context/Provider';
+
+
+/*
+* AuthProvider on Classes
+ReactDOM.render(
+  <React.StrictMode>
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+    <Toaster/>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+*/
+
+// Provider on hooks
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider>
+      <App />
+    </Provider>
+    <Toaster/>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
