@@ -5,6 +5,7 @@ import App from 'components/App';
 import AuthProvider from 'context/AuthProvider';
 import Provider from 'context/Provider';
 
+import ThemeProviderClass from './context/themeProvider';
 
 /*
 * AuthProvider on Classes
@@ -20,13 +21,14 @@ ReactDOM.render(
 */
 
 // Provider on hooks
-ReactDOM.render(
-  <React.StrictMode>
+ReactDOM.render( 
+    <React.StrictMode >
+    <ThemeProviderClass>
     <Provider>
-      <App />
+    <App/>
     </Provider>
-    <Toaster/>
-  </React.StrictMode>,
-  document.getElementById('root')
+    </ThemeProviderClass>  
+    <Toaster / >
+    </React.StrictMode>,
+    document.getElementById('root')
 );
-

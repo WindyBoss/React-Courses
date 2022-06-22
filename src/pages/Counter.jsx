@@ -1,6 +1,8 @@
 import React, { Component, useState, useEffect } from "react";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import Button from '@mui/material/Button';
+
+import { themeContext } from "context/authContext";
+import { ButtonStyled } from "components/globalStyles";
 
 import { CounterContainer, BtnContainer, TotalClickCounter, MainContainer } from '../components/Counter/Counter.styled';
 
@@ -37,15 +39,25 @@ class CounterClass extends Component {
     const { counterA, counterB } = this.state;
     const totalClick = counterB + counterA;
     return (
-      <BtnContainer>
-        <Button style={{fontSize: '10px'}} variant="contained" endIcon={<ArrowUpwardIcon />} onClick={this.handleCounterAIncrement}>
-          Counter A {counterA} Clicks
-        </Button>
-        <TotalClickCounter>{totalClick}</TotalClickCounter>
-        <Button style={{fontSize: '10px'}} variant="contained" endIcon={<ArrowUpwardIcon />} onClick={this.handleCounterBIncrement}>
-          Counter B {counterB} Clicks
-        </Button>
-      </BtnContainer>
+      <themeContext.Consumer>
+      {({mainTheme}) => (  
+        <BtnContainer colors={mainTheme.colors}>
+          <ButtonStyled colors={mainTheme.colors} 
+          endIcon={<ArrowUpwardIcon />} 
+          type='button'
+          onClick={this.handleCounterAIncrement}>
+            Counter A {counterA} Clicks
+          </ButtonStyled>
+          <TotalClickCounter colors={mainTheme.colors}>{totalClick}</TotalClickCounter>
+          <ButtonStyled colors={mainTheme.colors} 
+          endIcon={<ArrowUpwardIcon />} 
+          type='button'
+          onClick={this.handleCounterBIncrement}>
+            Counter B {counterB} Clicks
+            </ButtonStyled>
+        </BtnContainer>
+      )}
+      </themeContext.Consumer>      
     );
   };
 };
@@ -108,30 +120,44 @@ function CounterHooks () {
   const totalClick = counterB + counterA;
 
   return (
-    <BtnContainer>
-      <Button style={{fontSize: '10px'}} variant="contained" endIcon={<ArrowUpwardIcon />} onClick={handleCounterAIncrement}>
-        Counter A {counterA} Clicks
-      </Button>
-      <TotalClickCounter>{totalClick}</TotalClickCounter>
-      <Button style={{fontSize: '10px'}} variant="contained" endIcon={<ArrowUpwardIcon />} onClick={handleCounterBIncrement}>
-        Counter B {counterB} Clicks
-      </Button>
-    </BtnContainer>
+    <themeContext.Consumer>
+    {({mainTheme}) => (
+      <BtnContainer colors={mainTheme.colors}>
+          <ButtonStyled colors={mainTheme.colors} 
+          endIcon={<ArrowUpwardIcon />} 
+          type='button'
+          onClick={handleCounterAIncrement}>
+          Counter A {counterA} Clicks
+          </ButtonStyled>
+        <TotalClickCounter colors={mainTheme.colors}>{totalClick}</TotalClickCounter>
+        <ButtonStyled colors={mainTheme.colors} 
+        endIcon={<ArrowUpwardIcon />} 
+        type='button'
+        onClick={handleCounterBIncrement}>
+          Counter B {counterB} Clicks
+          </ButtonStyled>
+      </BtnContainer>
+      )}
+    </themeContext.Consumer>      
   );
 };
 
 
 export default function CounterPage() {
   return (
+    <themeContext.Consumer>
+    {({mainTheme}) => (
     <MainContainer>
-      <CounterContainer>
+      <CounterContainer colors={mainTheme.colors}>
         <p>CounterClass</p>
         <CounterClass />
       </CounterContainer>
-      <CounterContainer>
+      <CounterContainer colors={mainTheme.colors}>
         <p>CounterHooks</p>
         <CounterHooks />
       </CounterContainer>
     </MainContainer>
+    )}
+    </themeContext.Consumer>       
   );
 };

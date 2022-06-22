@@ -6,6 +6,8 @@ import { FormElement } from '../components/SignupForm/FormElement';
 import { UserList } from '../components/SignupForm/UserList';
 import { UserListText, MainFormContainer } from '../components/SignupForm/SignupForm.styled';
 
+import { themeContext } from "context/authContext";
+
 const shortid = require('shortid');
 
 export default class SignupFormClass extends Component {
@@ -68,24 +70,28 @@ export const SignupForm = () => {
   };
 
   return (
-    <>
-      <div style={{ display: 'inline-flex', border: '1px solid white', padding: '20px', margin: '10px 30px' }}>
+    <themeContext.Consumer>
+    {({mainTheme}) => (  
+      <>
+      <div style={{ display: 'inline-flex', border: `1px solid ${mainTheme.colors.containerBorderColor}`, padding: '20px', margin: '10px 30px' }}>
         <MainFormContainer>
-          <p>Signup form with class</p>
+          <p style={{color: mainTheme.colors.mainText}}>Signup form with class</p>
           <SignupFormClass onSubmit={collectUsers} />
         </MainFormContainer>
         <MainFormContainer>
-          <p>Signup form with hooks</p>
+          <p style={{color: mainTheme.colors.mainText}}>Signup form with hooks</p>
           <SignupFormHooks onSubmit={collectUsers} />
         </MainFormContainer>
       </div>
-      <div style={{ margin: '10px 30px', display: 'inline-block', border: '1px solid white', padding: '20px'}}>
-        <div style={{ marginLeft: 'auto', width: '305px', display: 'flex', border: '1px solid white', padding: '20px', justifyContent: 'space-between'}}>
-        <UserListText>User List</UserListText>
-        <UserListText>Number of users: {userList.length}</UserListText>
+      <div style={{ margin: '10px 30px', display: 'inline-block', border: `1px solid ${mainTheme.colors.containerBorderColor}`, padding: '20px'}}>
+        <div style={{ marginLeft: 'auto', width: '305px', display: 'flex', border: `1px solid ${mainTheme.colors.containerBorderColor}`, padding: '20px', justifyContent: 'space-between'}}>
+        <UserListText colors={mainTheme.colors}>User List</UserListText>
+        <UserListText colors={mainTheme.colors}>Number of users: {userList.length}</UserListText>
         </div>
         <UserList userList={userList} />
       </div>
-    </>
+      </>
+    )}
+    </themeContext.Consumer>      
   );
 }

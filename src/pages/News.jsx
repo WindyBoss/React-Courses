@@ -10,6 +10,9 @@ import { NewsContainer } from '../components/News/News.styled.jsx';
 
 import { useLocalStorage } from '../Hooks/useLocalStorage';
 
+import { themeContext } from "context/authContext";
+
+
 const Status = {
   IDLE: 'idle',
   PENDING: 'pending',
@@ -47,11 +50,14 @@ class NewsClass extends Component {
 
   fetchData = async () => {
     const { currentPage, searchQuery } = this.state;
-    const options = { searchQuery, currentPage };
+    const numberedCurrentPage = currentPage;
+    const options = { searchQuery, numberedCurrentPage };
     this.setState({ status: Status.PENDING });
+
     try {
       await fetchArticles(options, this.abortController)
       .then((articles) => {
+        console.log(articles);
       this.setState(prevState => ({
         articles: [...prevState.articles, ...articles],
         currentPage: prevState.currentPage + 1,
@@ -66,9 +72,13 @@ class NewsClass extends Component {
   render() {
     const { articles, status } = this.state;
     const shouldRenderLoadMoreButton = articles.length > 0 && status === 'resolved';
+    console.log(articles);
+    console.log(this.state.currentPage);
 
     return (
-      <NewsContainer>
+      <themeContext.Consumer>
+      {({mainTheme}) => (  
+      <NewsContainer colors={mainTheme.colors}>
         <h1>News By Class</h1>
         {status === 'idle' && <Idle/>}
         {status === 'rejected' && <Rejected/>}
@@ -76,6 +86,8 @@ class NewsClass extends Component {
         {status === 'resolved' && <Resolved articles={articles} shouldRenderLoadMoreButton={shouldRenderLoadMoreButton} onClick={this.fetchData}/>}
         {status === 'pending' && <Pending/>}
       </NewsContainer>
+      )}
+      </themeContext.Consumer>      
     );
   };
 };
@@ -165,14 +177,18 @@ function NewsHooks() {
   const shouldRenderLoadMoreButton = articles.length > 0 && status === 'resolved';
 
   return (
-    <NewsContainer>
-      <h1>News By Hooks</h1>
+    <themeContext.Consumer>
+    {({mainTheme}) => (  
+    <NewsContainer colors={mainTheme.colors}>
+    <h1>News By Hooks</h1>
       {status === 'idle' && <Idle />}
       {status === 'rejected' && <Rejected />}
       <NewSearchFormHooks onSubmit={onChangeQuery} />
       {status === 'resolved' && <Resolved articles={articles} shouldRenderLoadMoreButton={shouldRenderLoadMoreButton} onClick={updatePage} />}
       {status === 'pending' && <Pending />}
     </NewsContainer>
+      )}
+      </themeContext.Consumer>      
   );
 };
 

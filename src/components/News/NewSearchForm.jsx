@@ -1,8 +1,10 @@
 import React, { Component, useState } from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
 import PropTypes from 'prop-types';
+
+import { themeContext } from '../../context/authContext'
+import { ButtonStyled, TextFieldStyled } from 'components/globalStyles';
+
 
 export class NewSearchFormClass extends Component {
   state = { query: '' };
@@ -20,18 +22,32 @@ export class NewSearchFormClass extends Component {
 
   render() {
     return (
+      <themeContext.Consumer>
+      {({mainTheme}) => (    
       <form onSubmit={this.handleSubmit} style={{ display: 'flex', alignItems: 'center' }}>
-        <TextField
+        <TextFieldStyled
+        colors={mainTheme.colors}
           type="text"
           value={this.state.query}
           onChange={this.handleChange}
           id="outlined-basic"
-          label="Text News"
+          label={"Text News"}
           variant="outlined"
           size="small"
+          color="secondary"
+          hoverColor="primary"
+          focused='focused'
+          darkTheme={true}
         />
-        <Button style={{ fontSize: '10px', marginLeft: '10px' }} endIcon={<SearchIcon />} variant="contained" type="submit">Search</Button>
+      <ButtonStyled 
+      style={{ fontSize: '10px', marginLeft: '10px' }} 
+      endIcon={<SearchIcon />} 
+      colors={mainTheme.colors} 
+      type="submit">Search</ButtonStyled>
       </form>
+    )}
+    </themeContext.Consumer>          
+
     );
   };
 };
@@ -66,18 +82,31 @@ export function NewSearchFormHooks({ onSubmit }) {
   */
 
   return (
+    <themeContext.Consumer>
+    {({mainTheme}) => (  
     <form onSubmit={handleSubmit} style={{display: 'flex', alignItems: 'center'}}>
-      <TextField
-        type="text"
-        value={query}
-        onChange={handleChange}
-        id="outlined-basic"
-        label="Text News"
-        variant="outlined"
-        size='small'
-      />
-      <Button style={{ fontSize: '10px', marginLeft: '10px' }} endIcon={<SearchIcon />} variant="contained" type="submit">Search</Button>
+        <TextFieldStyled
+        colors={mainTheme.colors}
+          type="text"
+          value={query}
+          onChange={handleChange}
+          id="outlined-basic"
+          label={"Text News"}
+          variant="outlined"
+          size="small"
+          color="secondary"
+          hoverColor="primary"
+          focused='focused'
+          darkTheme={true}
+        />
+      <ButtonStyled 
+      style={{ fontSize: '10px', marginLeft: '10px' }} 
+      endIcon={<SearchIcon />} 
+      colors={mainTheme.colors} 
+      type="submit">Search</ButtonStyled>
     </form>
+    )}
+    </themeContext.Consumer>          
   );
 };
 

@@ -1,23 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from "./ColorPicker.styled";
+
+import { ButtonStyled } from 'components/globalStyles';
+import { themeContext } from '../../context/authContext'
 
 export default function ButtonList({options, setActiveIdx}) {
   return (
+    <themeContext.Consumer>
+    {({mainTheme}) => (  
     <div style={{
-      backgroundColor: 'white',
       display: 'inline-flex',
       marginLeft: '50%',
       transform: 'translateX(-50%)'
     }}>
       { options.map(({label, color}, index) => (
-      <Button
+      <ButtonStyled
         key={label}
-        style={{ backgroundColor: color }}
-        onClick={() => setActiveIdx(index)}>
-      </Button>
+        onClick={() => setActiveIdx(index)}
+        colors={mainTheme.colors}
+        btnBgColor={color}
+        addFeat={ { marginRight: '10px' } }
+        >
+        {label}  
+      </ButtonStyled>
       ))}
     </div>
+    )}
+    </themeContext.Consumer>      
   );
 };
 

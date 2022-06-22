@@ -19,22 +19,17 @@ export const Button = styled.button`
   }
 `;
 
-export const ThemeSwitcher = styled.button`
+export const ThemeSwitcher = styled.div`
 display: inline-block;
-padding: 10px 20px;
+border-radius: 50%;
 font-size: 18px;
 margin: 20px;
+background-color: transparent;
 
-  border: ${props => `1px solid ${props.colors.counterColor}`};
-  background-color: ${props => props.colors.btnBgColor};
-  color: ${props => props.colors.btnTextColor};
-  border-radius: 5px;
-  margin-bottom: 5px;
-  :hover,
-  :focus {
-    background-color: ${props => props.colors.hoverBtnBgColor};
-    color: ${props => props.colors.hoverBtnColor};
-  }
+:hover {
+  background-color: ${props => props.colors.hoverBtnBgColor};
+}
+
 `;
 
 export const RoutesStyled = styled.ul`

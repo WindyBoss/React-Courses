@@ -1,26 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@mui/material/Button';
+import InsertLinkTwoToneIcon from '@mui/icons-material/InsertLinkTwoTone';
 
-import { NewsList, Link, LinkButton, LinkTitle, NewItem } from './News.styled.jsx';
+import { themeContext } from '../../context/authContext'
+import { ButtonStyled } from 'components/globalStyles';
+
+import { NewsList, Link, LinkTitle, NewItem } from './News.styled.jsx';
 
 export function Resolved({articles, shouldRenderLoadMoreButton, onClick}) {
   return (
+    <themeContext.Consumer>
+    {({mainTheme}) => (    
     <>
-      <NewsList>
+      <NewsList colors={mainTheme.colors}>
         {articles.map(({ title, url }) => (
           <NewItem key={title}>
-            <LinkButton>
-              <Link href={url} target="_blank" rel="noopener noreferrer">Link</Link>
-            </LinkButton>
+              <Link href={url} target="_blank" rel="noopener noreferrer"><InsertLinkTwoToneIcon/></Link>
             <LinkTitle>{title}</LinkTitle>
           </NewItem>
         ))}
       </NewsList>
       {shouldRenderLoadMoreButton && (
-        <Button style={{fontSize: '10px'}} variant="contained" type='button' onClick={onClick}>Load more</Button>
+        <ButtonStyled colors={mainTheme.colors} type='button' onClick={onClick}>Load more</ButtonStyled>        
       )}
     </>
+    )}
+    </themeContext.Consumer>          
   );
 };
 

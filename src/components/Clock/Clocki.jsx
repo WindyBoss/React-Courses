@@ -1,13 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@mui/material/Button'; // => Button Mui library styled element
+
+import { themeContext } from '../../context/authContext'
+import { ButtonStyled } from 'components/globalStyles';
 
 export function Clocki({text, time, onClick, refferer}){
   return (
-    <div style={{ border: '1px solid white', display: 'inline-block', padding: '10px', margin: '10px' }}>
-      <p style={{color: 'white'}}>{text}: {time.toLocaleTimeString()}</p>
-      <Button style={{ marginLeft: 'auto', marginTop: '10px' }} variant="contained" type='button' onClick={onClick} ref={refferer}>Stop</Button>
+    <themeContext.Consumer>
+    {({mainTheme}) => (  
+
+    <div style={{ border: `1px solid ${mainTheme.colors.containerBorderColor}`, display: 'inline-block', padding: '10px', margin: '10px' }}>
+      <p style={{color: `${mainTheme.colors.mainText}`, marginBottom: '10px'}}>{text}: {time.toLocaleTimeString()}</p>
+      <ButtonStyled 
+      colors={mainTheme.colors}
+      type='button' 
+      onClick={onClick} 
+      ref={refferer}>Stop</ButtonStyled>
     </div>
+    )}
+    </themeContext.Consumer>      
   );
 };
 
