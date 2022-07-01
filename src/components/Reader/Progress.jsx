@@ -26,7 +26,6 @@ Progress.propTypes = {
 function CircularProgressWithLabel(
   props: CircularProgressProps & { value: number }, colors
 ) {
-  console.log(colors);
   return (
     <Box sx={{ position: 'relative', display: 'inline-flex' }}>
       <CircularProgress variant="determinate" {...props} />

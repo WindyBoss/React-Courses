@@ -15,7 +15,7 @@ export const Layout = ({ children }) => {
     const {colors} = mainTheme;
     return (
     <div>
-      <RoutesStyled>
+      <RoutesStyled colors={mainTheme.colors}>
         <List>
           <Link style={{textDecoration: 'none'}} to='/react-homework-template/Counter'>
             <ButtonStyled type='button' colors={colors}>
@@ -64,7 +64,35 @@ export const Layout = ({ children }) => {
               Reader
             </ButtonStyled>
             </Link>
-        </List>     
+        </List>
+        <List>
+          <Link style={{textDecoration: 'none'}} to='/react-homework-template/ReaderWithApi'>
+            <ButtonStyled type='button' colors={colors}>
+              Reader With Api
+            </ButtonStyled>
+            </Link>
+        </List>          
+        <List>
+          <Link style={{textDecoration: 'none'}} to='/react-homework-template/Tabs'>
+            <ButtonStyled type='button' colors={colors}>
+              Tabs
+            </ButtonStyled>
+            </Link>
+        </List> 
+        <List>
+          <Link style={{textDecoration: 'none'}} to='/react-homework-template/TodoList'>
+            <ButtonStyled type='button' colors={colors}>
+            TodoList
+            </ButtonStyled>
+            </Link>
+        </List>
+        <List>
+          <Link style={{textDecoration: 'none'}} to='/react-homework-template/Pokemon'>
+            <ButtonStyled type='button' colors={colors}>
+            Pokemon
+            </ButtonStyled>
+            </Link>
+        </List>                               
         {children} 
       </RoutesStyled>
       <Outlet />

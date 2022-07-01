@@ -3,20 +3,19 @@ import PropTypes from 'prop-types';
 
 export function TextWrapper({
   publication,
-  colors
+  colors,
+  children,
 }) {
   return (
     <>
-      <TextContainer
-        colors={colors}
-      >
+      <TextContainer colors={colors}>
         <h2>{publication.title}</h2>
         <p>{publication.text}</p>
+        {children}
       </TextContainer>
     </>
   );
 };
-
 
 TextWrapper.propTypes = {
   publication: PropTypes.shape({

@@ -1,6 +1,8 @@
 import { Button } from './Reader.styled';
 import PropTypes from 'prop-types';
 
+import { ButtonStyled } from "components/globalStyles";
+
 export function Controls({
   onClick,
   colors,
@@ -10,27 +12,21 @@ export function Controls({
 }) {
   return (
     <>
-      <Button
+      <ButtonStyled
         colors={colors}
         onClick={() => onClick(-1)}
-        /*
-        * disabled={index === 0} // -> in that way react puts conditions to DOM element
-        */
         type='button'>
         Back
-      </Button>
+      </ButtonStyled>
 
       {children}
 
-      <Button
+      <ButtonStyled
         colors={colors}
         onClick={() => onClick(1)}
-        /*
-        * disabled={index + 1 === publicationsLength} // -> in that way react puts conditions to DOM element
-        */
         type='button'>
         Front
-      </Button>
+      </ButtonStyled>
     </>
   );
 };

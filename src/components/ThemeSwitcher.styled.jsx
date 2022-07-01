@@ -1,24 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-
-export const Button = styled.button`
-  width: 150px;
-  font-size: 14px;
-  margin-top: 20px;
-  border: ${props => `1px solid ${props.colors.btnBorderColor}`};
-  background-color: ${props => props.colors.btnBgColor};
-  color: ${props => props.colors.btnTextColor};
-  border-radius: 5px;
-  margin-bottom: 5px;
-  padding: 10px;
-  :hover,
-  :focus {
-  background-color: ${props => props.colors.hoverBtnBgColor};
-  color: ${props => props.colors.hoverBtnColor};
-  }
-`;
-
 export const ThemeSwitcher = styled.div`
 display: inline-block;
 border-radius: 50%;
@@ -29,13 +11,12 @@ background-color: transparent;
 :hover {
   background-color: ${props => props.colors.hoverBtnBgColor};
 }
-
 `;
 
 export const RoutesStyled = styled.ul`
 display: flex;
 list-style: none;
-border-bottom: 1px solid black;
+border-bottom: ${props => `1px solid ${props.colors.containerBorderColor}`};
 padding: 10px;
 justify-content: center;
 align-items: center;
@@ -48,7 +29,6 @@ export const List = styled.li`
 `;
 
 export const LinkStyled = styled(Link)`
-
 text-decoration: none;
 font-size: 22px;
 display: inline-block;
@@ -64,5 +44,4 @@ padding: 5px;
     background-color: ${props => props.colors.hoverBtnBgColor};
     color: ${props => props.colors.hoverBtnColor};
   }
-
 `;

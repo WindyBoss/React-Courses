@@ -102,7 +102,7 @@ const ReaderHooks = ({publications}) => {
 export const Reader = ({publications, colors}) => {
   return (
     <div>
-      <ReaderClass publications={publications} colors={colors}/>
+      <ReaderClass publications={publications}/>
       <ReaderHooks publications={publications}/>
     </div>
   )
@@ -113,7 +113,6 @@ Reader.propTypes = {
     text: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired
   })).isRequired,
-  colors: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 

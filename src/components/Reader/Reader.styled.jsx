@@ -1,29 +1,7 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  max-width: 110px;
-  margin-bottom: 15px;
-  height: 30px;
-  border: ${props => `1px solid ${props.colors.btnBorderColor}`};
-  background-color: ${props => props.colors.btnBgColor};
-  color: ${props => props.colors.btnTextColor};
-  border-radius: 5px;
-  margin-bottom: 5px;
-  padding: 10px 20px;
-  font-size: 20px;
-  :hover,
-  :focus {
-  background-color: ${props => props.colors.hoverBtnBgColor};
-  color: ${props => props.colors.hoverBtnColor};
-  };
-`;
-
-
 export const TextContainer = styled.div`
+position: relative;
 padding: 20px;
 min-height: 300px;
 background-color: ${props => props.colors.btnBgColor};
@@ -44,4 +22,17 @@ padding: 20px;
   color: ${props => props.colors.btnTextColor};
   margin-left: 20px;
   margin-right: 20px;
+`;
+
+
+export const FormContainer = styled.div`
+display: inline-flex;
+flex-direction: column;
+padding: 20px;
+border: 1px solid black;
+max-width: 500px;
+margin: 20px;
+border: ${props => `3px solid ${props.colors.containerBorderColor}`};
+color: ${props => props.colors.mainText};
+
 `;

@@ -14,14 +14,21 @@ import { Clock } from '../pages/Clock';
 import { News } from '../pages/News';
 import { Video } from '../pages/Video';
 import { Reader } from '../pages/Reader';
+import { ReaderWithApi } from '../pages/ReaderWithApi';
+import { Pokemon } from '../pages/Pokemon';
+
+import Tabs from '../pages/Tabs';
+import TodoList from '../pages/Todolist';
 
 import videos from '../data/video.json';
 import publications from '../data/publications.json';
+import tabs from '../data/tabs.json';
+import todos from '../data/todos.json';
 
 import Appbar from './Appbar';
-import {GlobalStyle} from './globalStyles';
+import { GlobalStyle } from './globalStyles';
 
-import {themeContext} from '../context/authContext';
+import { themeContext } from '../context/authContext';
 
 const colorPickerOptions = [
   { label: 'red', color: 'red' },
@@ -61,7 +68,11 @@ export default function App () {
                 <Route path="/react-homework-template/Clock" element={<Clock />} />
                 <Route path="/react-homework-template/News" element={<News />} />
                 <Route path="/react-homework-template/Video" element={<Video videos={videos} />} />
-                <Route path="/react-homework-template/Reader" element={<Reader colors={mainTheme.colors} publications={publications} />} />
+                <Route path="/react-homework-template/Reader" element={<Reader publications={publications} />} />
+                <Route path="/react-homework-template/ReaderWithApi" element={<ReaderWithApi/>} />
+                <Route path="/react-homework-template/Tabs" element={<Tabs items={tabs} />} />
+                <Route path="/react-homework-template/TodoList" element={<TodoList colors={mainTheme.colors} todos={todos} />} />
+                <Route path="/react-homework-template/Pokemon" element={<Pokemon />} />              
               </Route>
             </Routes>
           </BrowserRouter>

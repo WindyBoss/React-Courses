@@ -1,6 +1,5 @@
 import { VideoListWrapper } from './Player.styled';
 import PropTypes from 'prop-types';
-import Button from '@mui/material/Button';
 
 import { themeContext } from '../../context/authContext'
 import { ButtonStyled } from 'components/globalStyles';

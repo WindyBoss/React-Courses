@@ -4,6 +4,9 @@ import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 
 import { styled } from '@mui/material/styles';
+import PropTypes from 'prop-types';
+import LinearProgress from '@mui/material/LinearProgress';
+
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -68,7 +71,7 @@ export function ButtonStyled ({
       style={ btnBgColor ? {...addFeat, ...btnStyles(colors, hover), color: btnBgColor, backgroundColor: '#b2b276'} : {...addFeat, ...btnStyles(colors, hover)}}
       onPointerOver={()=> setHover(true)}
       onPointerOut={() => setHover(false)}
-      onClick={onClick}
+      onClick={onClick ?? onClick}
       variant="contained" 
       type={type}
       endIcon={endIcon}
@@ -79,6 +82,17 @@ export function ButtonStyled ({
   )
 };
 
+ButtonStyled.propTypes = {
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func, 
+  colors: PropTypes.objectOf(PropTypes.string).isRequired, 
+  endIcon: PropTypes.object,
+  type: PropTypes.string, 
+  disabled: PropTypes.bool, 
+  btnBgColor: PropTypes.string, 
+  addFeat: PropTypes.any,
+};
+
 export function TextFieldStyled ({ 
   value, 
   onChange, 
@@ -87,15 +101,12 @@ export function TextFieldStyled ({
   variant, 
   size, 
   type, 
-  id, 
-  hoverColor,
-  color,
+  id,
+  addFeat,
+  name 
 }) {
-  const [hover, setHover] = useState(false);  
   return (
     <CssTextField
-      onFocus={()=> setHover(true)}
-      onBlur={() => setHover(false)}
       type={type}
       value={value}
       label={label}
@@ -103,14 +114,25 @@ export function TextFieldStyled ({
       size={size}
       id={id}
       onChange={onChange}
-      color={hover ? color : hoverColor}
       colors={colors}
-      style={{marginRight: '20px'}}
+      name={name}
+      style={{marginRight: '20px', ...addFeat}}
     />
   )
-}
+};
 
-const CssTextField = styled(TextField)(({ colors }) => ({ 
+TextFieldStyled.propTypes = {
+  value: PropTypes.string, 
+  onChange: PropTypes.func, 
+  colors: PropTypes.objectOf(PropTypes.string).isRequired, 
+  label: PropTypes.string, 
+  variant: PropTypes.string,
+  size: PropTypes.string, 
+  type: PropTypes.string, 
+  id: PropTypes.string,
+};
+
+const CssTextField = styled(TextField)(({ colors, addFeat }) => ({ 
   '& label.Mui-focused': {
     color: colors.hoverBtnBgColor,
   },
@@ -120,6 +142,7 @@ const CssTextField = styled(TextField)(({ colors }) => ({
 
   '& .MuiOutlinedInput-root': {
     color: colors.btnBgColor,
+    ...addFeat,
 
     '& fieldset': {
       borderColor: colors.btnBgColor,
@@ -132,7 +155,19 @@ const CssTextField = styled(TextField)(({ colors }) => ({
     
       '& fieldset': {
       borderColor: colors.hoverBtnBgColor,
+      ...addFeat,
     },
-  }
-  },
-}));
+}}}));
+
+const CssProgressBar = styled(LinearProgress)(({colors}) => {
+  return ({
+   '& .MuiLinearProgress-bar': {
+    backgroundColor: colors.btnBgColor,
+   }
+})});
+
+export const LinearProgressStyled = ({colors, addFeat}) => {
+    return (<CssProgressBar colors={colors} style={{ 
+      backgroundColor: colors.hoverBtnBgColor, ...addFeat
+    }} />)
+}

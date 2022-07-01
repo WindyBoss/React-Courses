@@ -24,12 +24,6 @@ export function Video ({videos}) {
   );
 };
 
-
-/*
-* Use Proptypes for checking type of props data of the component
-*/
-
-
 Video.propTypes = {
   videos: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
