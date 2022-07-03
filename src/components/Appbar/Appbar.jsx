@@ -9,12 +9,13 @@ import { themeContext } from '../../context/authContext';
 
 import { btnStyles } from 'components/globalStyles';
 
+import { Battery } from '../../pages/Battery';
+
 /*
 * this Appbar is made by hook useContext, where all information is written in variable
 */
 export default function Appbar() {
   const { user, isLoggedIn, onLogIn, onLogOut, mainTheme, changeTheme } = useContext(authContext);
-
 
   /*
   * useContext can be used multiple time in on App
@@ -39,6 +40,7 @@ export default function Appbar() {
                 type="button">Log in</Button>
             </div>
           )}
+          <Battery/>
         </Layout>
         </header>
       )}

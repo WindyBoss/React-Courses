@@ -22,6 +22,7 @@ class ReaderClass extends Component {
     index: localStorage.getItem(LS_KEY) ? Number(localStorage.getItem(LS_KEY)) : 0,
     articles: [],
   };
+  abortController = new AbortController();
 
   deleteItem = async () => {
     const { index, articles } = this.state;
@@ -54,7 +55,6 @@ class ReaderClass extends Component {
         
     try {
         const articles = await API.getPublications();
-
         this.setState({ articles });
         apiState.success();
     } catch (error) {
@@ -78,18 +78,22 @@ class ReaderClass extends Component {
     };
   };
 
+  componentWillUnmount() {
+    this.abortController.abort();
+  };
+
   componentDidMount = () => {
     this.makeFetch();
   };
 
   componentDidUpdate(prevProps, prevState) {
-      if (prevState.index !== this.state.index) {
-        localStorage.setItem(LS_KEY, Number(this.state.index));
-      };
+    if (prevState.index !== this.state.index) {
+      localStorage.setItem(LS_KEY, Number(this.state.index));
+    };
 
-      if(prevProps.checkArticle !== this.props.checkArticle) {
-        this.makeFetch();
-      }
+    if(prevProps.checkArticle !== this.props.checkArticle) {
+      this.makeFetch();
+    }
   };
 
   render() {
@@ -101,7 +105,6 @@ class ReaderClass extends Component {
       <themeContext.Consumer>
       {({mainTheme}) => (
         <>
-
         { apiState.isIdle() && <div>Publications did not come yet!</div> }
 
         { apiState.isPending() &&
@@ -140,7 +143,6 @@ const ReaderHooks = ({apiState, checkArticle}) => {
 
   const deleteItem = async () => {
     const currentPublication = articles[index];
-
     apiState.pending();
     try { 
 
@@ -176,24 +178,42 @@ const ReaderHooks = ({apiState, checkArticle}) => {
   };
 
   useEffect(() => {
-    const getArticles = async () => {
+    const abortController = new AbortController();   
+    // const getArticles = async () => {
+    //   const data = await API.getPublications();
+    //   setArticles(data);
+    //   apiState.success();
+    // };
+
+    // apiState.pending();    
+    // try {
+    //   getArticles();      
+    // } catch (error) {
+    //   apiState.error();
+    // }; 
+
+   (async function getArticles () {
+    apiState.pending();    
+    try {
       const data = await API.getPublications();
       setArticles(data);
       apiState.success();
-    }
-
-    apiState.pending();    
-    try {
-      getArticles();
     } catch (error) {
-        apiState.error();
+      apiState.error();
     }; 
 
+    return () => {
+      abortController.abort();
+    }; 
+
+    })(); // other type of calling the function
   },[ apiState, checkArticle ])
 
   useEffect(() => {
     localStorage.setItem( LS_KEY_Hooks, Number(index) );
-  },[ index ])
+  },[ index ]);
+
+  index > articles.length - 1 ?? setIndex(articles.length - 1);
 
   return (
     <themeContext.Consumer>

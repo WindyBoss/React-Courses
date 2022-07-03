@@ -36,6 +36,6 @@ color: ${props => props.colors.mainText};
 
 export const MainContainer = styled.div`
   display: flex;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  margin-left: 30%;
+  transform: translateX(-30%);
 `;

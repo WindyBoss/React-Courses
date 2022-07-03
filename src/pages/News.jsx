@@ -43,7 +43,7 @@ class NewsClass extends Component {
       articles: [],
     });
   };
-
+  
   componentWillUnmount() {
     this.abortController.abort();
   }

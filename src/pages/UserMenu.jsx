@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import Button from '@mui/material/Button';
-// import ctx from '../context/authContext';
+
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import {themeContext} from '../context/authContext';
 
@@ -25,9 +26,10 @@ export default function UserMenu({ onLogOut, user }) {
   return (
     <themeContext.Consumer>
     {({mainTheme}) => (
-    <div style={{display:'inline-flex', width: '250px', padding: '10px', margin: '20px'}}>
+    <div style={{display:'inline-flex', width: '450px', padding: '10px', margin: '20px', alignItems: 'center', color: mainTheme.colors.mainText,}}>
       <Button style={btnStyles(mainTheme.colors)} variant="contained" type='button' onClick={onLogOut}>Sign out</Button>
-      <p style={{ minWidth: '100px', textAlign: 'center' }}>user: {user.name}</p>
+      <p style={{ minWidth: '100px', textAlign: 'center', marginLeft: '20px' }}>Welcome:  {user.name}</p>
+       <AccountCircleIcon style={{marginLeft: '5px'}} />
     </div>
       )}
     </themeContext.Consumer>      

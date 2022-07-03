@@ -1,6 +1,6 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component, useState, useEffect, useReducer } from "react";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-
+import ArrowDownwardTwoToneIcon from '@mui/icons-material/ArrowDownwardTwoTone';
 import { themeContext } from "context/authContext";
 import { ButtonStyled } from "components/globalStyles";
 
@@ -142,6 +142,59 @@ function CounterHooks () {
   );
 };
 
+function countReducer (state, action) {
+  switch (action.type) {
+    case 'increment': // => in this switch is use string to show the operation type
+      return {...state, count: state.count + action.payload}; // => before recalculation it is better to spread an old state
+
+    case 'decrement':
+      return {...state, count: state.count - action.payload}; // => before recalculation it is better to spread an old state
+
+    default:
+      throw new Error('Unknown action type ' + action.type);
+    }
+};
+
+function CounterHooksReducer () {
+  // const [state, dispatch] = useReducer(countReducer, {count: 0});
+
+  /*
+  * useReducer is used for more complicated state management. It has 3 parameters:
+  1. setState function
+  2. initial State [any type of data]
+  3. initial State function, which create initial state, or hook will use initialState from 2 parameter
+  */
+
+  const [state, dispatch] = useReducer(countReducer, {count: 0}, init); // usually function to state update is called dispatch
+  function init(initialState) {
+    return {
+      ...initialState, // => before recalculation it is better to spread an old state
+      count: initialState.count + 100
+    };
+  }
+
+  return (
+    <themeContext.Consumer>
+    {({mainTheme}) => (
+      <BtnContainer colors={mainTheme.colors}>
+          <ButtonStyled colors={mainTheme.colors} 
+          endIcon={<ArrowUpwardIcon />} 
+          type='button'
+          onClick={() => dispatch({ type: 'increment', payload: 1})}>
+          Increase by one
+          </ButtonStyled>
+        <TotalClickCounter colors={mainTheme.colors}>{state.count}</TotalClickCounter>
+        <ButtonStyled colors={mainTheme.colors} 
+        endIcon={<ArrowDownwardTwoToneIcon />} 
+        type='button'
+        onClick={() => dispatch({ type: 'decrement', payload: 1})}>
+        Decrease by one
+        </ButtonStyled>
+      </BtnContainer>
+      )}
+    </themeContext.Consumer>      
+  );
+};
 
 export default function CounterPage() {
   return (
@@ -155,6 +208,10 @@ export default function CounterPage() {
       <CounterContainer colors={mainTheme.colors}>
         <p>CounterHooks</p>
         <CounterHooks />
+      </CounterContainer>
+      <CounterContainer colors={mainTheme.colors}>
+        <p>CounterHooks with Reducer</p>
+        <CounterHooksReducer />
       </CounterContainer>
     </MainContainer>
     )}

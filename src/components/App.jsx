@@ -16,6 +16,9 @@ import { Video } from '../pages/Video';
 import { Reader } from '../pages/Reader';
 import { ReaderWithApi } from '../pages/ReaderWithApi';
 import { Pokemon } from '../pages/Pokemon';
+import Friends from 'pages/Friend.jsx';
+
+import SkipEffectOnFirstRender from 'pages/SkipEffectOnFirstRender.jsx';
 
 import Tabs from '../pages/Tabs';
 import TodoList from '../pages/Todolist';
@@ -73,6 +76,8 @@ export default function App () {
                 <Route path="/react-homework-template/Tabs" element={<Tabs items={tabs} />} />
                 <Route path="/react-homework-template/TodoList" element={<TodoList colors={mainTheme.colors} todos={todos} />} />
                 <Route path="/react-homework-template/Pokemon" element={<Pokemon />} />              
+                <Route path="/react-homework-template/SkipEffectOnFirstRender" element={<SkipEffectOnFirstRender />} />              
+                <Route path="/react-homework-template/Friends" element={<Friends />} />              
               </Route>
             </Routes>
           </BrowserRouter>

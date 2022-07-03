@@ -79,7 +79,7 @@ function PokemonInfoHooks ({apiState, pokemonName, colors}) {
       apiState.pending();
       pokeApi.fetchPokemon(pokemonName, abortController)
       .then(pokemon => {
-        setPokemon(pokemon);
+        setPokemon(pokemon);  // First is necessary to set Pokemon and after that to render interface, or it will show errors
         apiState.success();
       })
       .catch(error => {
