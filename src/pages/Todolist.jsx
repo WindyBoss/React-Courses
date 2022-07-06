@@ -14,12 +14,20 @@ import { themeContext } from "context/authContext";
 import { ButtonStyled } from '../components/globalStyles'; 
 import CreateTwoToneIcon from '@mui/icons-material/CreateTwoTone';
 
+
+const useModal = (isOpen = false) => {
+  const [showModal, setShowModal] = useState(isOpen);
+  const toggleModal = () => setShowModal(!showModal);
+
+  return [showModal, toggleModal];
+}
+
 function TodoListHooks ({todos}) {
   const localStorageKey = 'todos';
   const diffKey = 'diff';
   const [allTodos, setAllTodos] = useState([]);
   const [filter, setFilter] = useState('');
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, toggleModal] = useModal(false);
   const [diff, setDiff] = useState([]);
   const listRef = React.createRef();
 
@@ -87,9 +95,6 @@ function TodoListHooks ({todos}) {
     setAllTodos(prevTodos => ([task, ...prevTodos] ));
   };
 
-  const toggleModal = () => {
-    setShowModal(prevModal => (!prevModal))
-  };
     const completedTasksNumber = allTodos.reduce((acc, todo) => (todo.completed ? acc + 1 : acc), 0);
     const filteredTodos = getTodos();
     return (

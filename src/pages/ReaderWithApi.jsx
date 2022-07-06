@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component, useState, useEffect, useCallback } from 'react';
 import toast from 'react-hot-toast';
 
 import { LinearProgressStyled } from '../components/globalStyles';
@@ -177,6 +177,17 @@ const ReaderHooks = ({apiState, checkArticle}) => {
     };
   };
 
+  const fetchData = useCallback(async () => { // useCallback is used as useMemo, but for functions, which helps to optimize performance, by keeping the function away from re-rendering
+      apiState.pending();    
+      try {
+        const data = await API.getPublications();
+        setArticles(data);
+        apiState.success();
+      } catch (error) {
+        apiState.error();
+      }; 
+  },[apiState]);
+
   useEffect(() => {
     const abortController = new AbortController();   
     // const getArticles = async () => {
@@ -192,22 +203,25 @@ const ReaderHooks = ({apiState, checkArticle}) => {
     //   apiState.error();
     // }; 
 
-   (async function getArticles () {
-    apiState.pending();    
-    try {
-      const data = await API.getPublications();
-      setArticles(data);
-      apiState.success();
-    } catch (error) {
-      apiState.error();
-    }; 
+  //  (async function getArticles () {
+  //   apiState.pending();    
+  //   try {
+  //     const data = await API.getPublications();
+  //     setArticles(data);
+  //     apiState.success();
+  //   } catch (error) {
+  //     apiState.error();
+  //   }; 
+  //   })(); // other type of calling the function
+
+
+    fetchData();
 
     return () => {
       abortController.abort();
     }; 
 
-    })(); // other type of calling the function
-  },[ apiState, checkArticle ])
+  },[ apiState, checkArticle, fetchData ])
 
   useEffect(() => {
     localStorage.setItem( LS_KEY_Hooks, Number(index) );

@@ -1,5 +1,6 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
+import React, { Component, useState, useEffect, useRef, forwardRef } from 'react';
 import { Clocki } from '../components/Clock/Clocki';
+
 
 class ClockClass extends Component {
   state = {
@@ -33,13 +34,14 @@ function ClockHooks() {
   const [time, setTime] = useState(() => new Date());
 
   const intervalId = useRef(null);
-  const buttonRef = useRef(null);
 
   useEffect(() => {
     intervalId.current = setInterval(() => {
       setTime(new Date());
       console.log('This is interval for every second');
+
     }, 1000);
+
 
     return () => {
       console.log('This before every useEffect');
@@ -52,7 +54,7 @@ function ClockHooks() {
   }
 
   return (
-    <><Clocki time={time} text='Current Time By Hooks' onClick={stop} refferer={buttonRef} /></>
+    <><Clocki time={time} text='Current Time By Hooks' onClick={stop}/></>
   );
 };
 

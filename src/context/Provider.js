@@ -7,7 +7,6 @@ export default function Provider({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const onLogIn = () => {
-        setUser({ name: 'Mango' });
         setIsLoggedIn(true);
     };
 
@@ -22,7 +21,7 @@ export default function Provider({ children }) {
      */
 
     const providerValue = useMemo(() => {
-        return { user, isLoggedIn, onLogIn, onLogOut };
+        return { user, isLoggedIn, onLogIn, onLogOut, setUser };
     }, [ isLoggedIn, user ]);
 
     return ( 

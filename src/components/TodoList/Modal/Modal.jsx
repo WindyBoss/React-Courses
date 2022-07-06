@@ -56,7 +56,6 @@ const modalRoot = document.querySelector('#modal-root');
 //   };
 // };
 
-
 export default function Modal({colors, children, onClose, todolist, loader}) {
   const handleBackBackdropClick = (e) => {
 

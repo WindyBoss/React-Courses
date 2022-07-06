@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { themeContext } from '../../context/authContext'
 import { ButtonStyled } from 'components/globalStyles';
 
-export function Clocki({text, time, onClick, refferer}){
+export const Clocki = (({text, time, onClick}) => {
   return (
     <themeContext.Consumer>
     {({mainTheme}) => (  
@@ -14,13 +14,12 @@ export function Clocki({text, time, onClick, refferer}){
       <ButtonStyled 
       colors={mainTheme.colors}
       type='button' 
-      onClick={onClick} 
-      ref={refferer}>Stop</ButtonStyled>
+      onClick={onClick}>Stop</ButtonStyled>
     </div>
     )}
     </themeContext.Consumer>      
   );
-};
+});
 
 Clocki.propTypes = {
   onClick: PropTypes.func.isRequired,

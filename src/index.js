@@ -6,6 +6,7 @@ import AuthProvider from 'context/AuthProvider';
 import Provider from 'context/Provider';
 
 import ThemeProviderClass from './context/themeProvider';
+import { arrayOf } from 'prop-types';
 
 /*
 * AuthProvider on Classes

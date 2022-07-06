@@ -17,8 +17,6 @@ export default class ThemeProviderClass extends Component {
         }
     };
 
-   
-
     render() {
         return ( 
         <themeContext.Provider value = { this.state }> 

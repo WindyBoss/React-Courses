@@ -16,9 +16,7 @@ import Battery4BarTwoToneIcon from '@mui/icons-material/Battery4BarTwoTone';
 import Battery5BarTwoToneIcon from '@mui/icons-material/Battery5BarTwoTone';
 import Battery6BarTwoToneIcon from '@mui/icons-material/Battery6BarTwoTone';
 
-
 import { themeContext } from "context/authContext";
-
 
 export const Battery = () => {
     const [isCharging, setIsCharging] = useState(false);
@@ -83,5 +81,5 @@ export const Battery = () => {
 
 
 const Text = forwardRef(({text}, ref) => { // => forwardRef helps to pass ref feature to child components | first argument - props, second - ref
-return <p style={{color: 'transparent', position: 'absolute', top: '16px', left: '-30px'}} ref={ref}>{text*100}%</p>
+return <p style={{color: 'transparent', position: 'absolute', top: '16px', left: '-30px'}} ref={ref}>{Math.round(text*10000)/100}%</p>
 });
