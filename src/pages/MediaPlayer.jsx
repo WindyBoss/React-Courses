@@ -4,9 +4,9 @@ import { ButtonStyled } from "components/globalStyles";
 import { themeContext } from "context/authContext";
 
 const MediaPlayer = ({source}) => {
-    const playerRef = useRef();
+    const playerRef = useRef(); // Here useRef helps to receive the allowance for controlling the media player and create Buttons for control
     const play = () => playerRef.current.play();
-    const pause = () => playerRef.current.pause();
+    const pause = () => playerRef.current.pause(); 
 
     return (
         <themeContext.Consumer>
@@ -21,7 +21,6 @@ const MediaPlayer = ({source}) => {
                 padding: '20px',
                 marginLeft: 'auto',
                 marginRight: 'auto',
-                // position: 'absolute',
             }}>
                 <ButtonStyled size='large' addFeat={{...btnStyles, marginRight: '15px'}} colors={mainTheme.colors} onClick={play}>Play</ButtonStyled>
                 <ButtonStyled addFeat={btnStyles} colors={mainTheme.colors} onClick={pause}>Pause</ButtonStyled>
