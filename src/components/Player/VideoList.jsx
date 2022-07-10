@@ -7,7 +7,6 @@ import { ButtonStyled } from 'components/globalStyles';
 export function VideoList({
   videos,
   onSelect,
-  colors
 }) {
   return (
     <themeContext.Consumer>

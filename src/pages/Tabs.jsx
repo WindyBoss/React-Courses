@@ -1,12 +1,7 @@
 import React, { PureComponent, useState } from 'react';
-import PropTypes from 'prop-types';
-
 import { themeContext } from "context/authContext";
-
 import { TextContainer, ButtonEl, TabContainer } from '../components/Tabs/Tabs.styled';
-
 import { ButtonStyled } from "components/globalStyles";
-
 
 class TabsClass extends PureComponent {
   state = {

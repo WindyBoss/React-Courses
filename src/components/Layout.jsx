@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { RoutesStyled, List, LinkStyled } from './ThemeSwitcher.styled';
-import { Link } from 'react-router-dom';
 
 import { themeContext } from '../context/authContext';
 

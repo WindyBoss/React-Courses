@@ -2,7 +2,6 @@ import {useContext} from 'react';
 import authContext from '../../context/authContext';
 import { Layout } from '../Layout';
 import UserMenu from '../../pages/UserMenu';
-import Button from '@mui/material/Button';
 import PersonIcon from '@mui/icons-material/Person';
 
 import { themeContext } from '../../context/authContext';
@@ -10,7 +9,6 @@ import { themeContext } from '../../context/authContext';
 import { ButtonStyled, TextFieldStyled } from 'components/globalStyles';
 
 import { Battery } from '../../pages/Battery';
-import { colors } from '@mui/material';
 
 /*
 * this Appbar is made by hook useContext, where all information is written in variable

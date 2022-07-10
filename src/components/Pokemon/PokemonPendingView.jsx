@@ -5,7 +5,6 @@ import { FormWrapper } from './Pokemon.styled';
 
 import { LinearProgressStyled } from '../globalStyles';
 
-
 export default function PokemonPendingView({ pokemonName, colors, isPending }) {
 
   const pokemon = {

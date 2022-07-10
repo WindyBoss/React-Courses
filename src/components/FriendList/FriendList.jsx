@@ -22,7 +22,7 @@ export default function FriendList({visibleFriends}) {
                         padding: '10px',
                     }} >
                     <AccountBoxTwoToneIcon color={mainTheme.id === 'dark' ? 'secondary' : 'primary'} />
-                    <p style={{marginLeft: '5px',}}>{friend}</p>
+                    <p style={{marginLeft: '5px',}}>{friend.name}</p>
                     </li>
                 ))}
             </ul>
