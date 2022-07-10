@@ -1,58 +1,50 @@
 [
     {
-        "name": "Solve task with university",
+        "name": "Task - 1",
         "deadline": "17.02.2022",
-        "description": "Pay for semester & send documents",
+        "description": "Description of task 1",
         "id": "id-1",
         "completed": false,
         "priority": "high"
     },
     {
-        "name": "FInish diploma Thesis",
+        "name": "Task - 2",
         "deadline": "01.05.2022",
-        "description": "Add more details about your experience in Seller Switch",
+        "description": "Description of task 2",
         "id": "id-2",
         "completed": false,
         "priority": "low"
     },
     {
-        "name": "Register the company",
+        "name": "Task - 3",
         "deadline": "10.03.2022",
-        "description": "Bring all document to gov. institution & pass registration process",
+        "description": "Description of task 3",
         "id": "id-3",
         "completed": false,
         "priority": "high"
     },
     {
-        "name": "Finish IT courses",
+        "name": "Task - 4",
         "deadline": "01.09.2022",
-        "description": "Pass throught all test",
+        "description": "Description of task 4",
         "id": "id-4",
         "completed": false,
         "priority": "high"
     },
     {
-        "name": "Make invitation for Mom",
+        "name": "Task - 5",
         "deadline": "23.02.2022",
-        "description": "Talk to Piotrek and bring docs to institution",
+        "description": "Description of task 5",
         "id": "id-5",
         "completed": false,
         "priority": "high"
     },
     {
-        "name": "Take polish citizenship",
+        "name": "Task - 6",
         "deadline": "31.12.2022",
-        "description": "Bring docs to institution",
+        "description": "Description of task 6",
         "id": "id-6",
         "completed": false,
         "priority": "middle"
-    },
-        {
-        "name": "Make a big progress with girls",
-        "deadline": "31.12.2022",
-        "description": "Practice & Practice",
-        "id": "id-7",
-        "completed": false,
-        "priority": "high"
     }
 ]
