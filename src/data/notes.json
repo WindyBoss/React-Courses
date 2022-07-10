@@ -1,58 +1,50 @@
 [
     {
-        "name": "Solve task with university",
-        "deadline": "17.02.2022",
-        "description": "Pay for semester & send documents",
-        "id": "id-1",
-        "completed": false,
-        "priority": "high"
+    "name": "Task - 1",
+    "deadline": "17.02.2022",
+    "description": "Description of task 1",
+    "id": "id-1",
+    "completed": false,
+    "priority": "high"
     },
     {
-        "name": "FInish diploma Thesis",
-        "deadline": "01.05.2022",
-        "description": "Add more details about your experience in Seller Switch",
-        "id": "id-2",
-        "completed": false,
-        "priority": "low"
+    "name": "Task - 2",
+    "deadline": "01.05.2022",
+    "description": "Description of task 2",
+    "id": "id-2",
+    "completed": false,
+    "priority": "low"
     },
     {
-        "name": "Register the company",
-        "deadline": "10.03.2022",
-        "description": "Bring all document to gov. institution & pass registration process",
-        "id": "id-3",
-        "completed": false,
-        "priority": "high"
+    "name": "Task - 3",
+    "deadline": "10.03.2022",
+    "description": "Description of task 3",
+    "id": "id-3",
+    "completed": false,
+    "priority": "high"
     },
     {
-        "name": "Finish IT courses",
-        "deadline": "01.09.2022",
-        "description": "Pass throught all test",
-        "id": "id-4",
-        "completed": false,
-        "priority": "high"
+    "name": "Task - 4",
+    "deadline": "01.09.2022",
+    "description": "Description of task 4",
+    "id": "id-4",
+    "completed": false,
+    "priority": "high"
     },
     {
-        "name": "Make invitation for Mom",
-        "deadline": "23.02.2022",
-        "description": "Talk to Piotrek and bring docs to institution",
-        "id": "id-5",
-        "completed": false,
-        "priority": "high"
+    "name": "Task - 5",
+    "deadline": "23.02.2022",
+    "description": "Description of task 5",
+    "id": "id-5",
+    "completed": false,
+    "priority": "high"
     },
     {
-        "name": "Take polish citizenship",
-        "deadline": "31.12.2022",
-        "description": "Bring docs to institution",
-        "id": "id-6",
-        "completed": false,
-        "priority": "middle"
-    },
-        {
-        "name": "Make a big progress with girls",
-        "deadline": "31.12.2022",
-        "description": "Practice & Practice",
-        "id": "id-7",
-        "completed": false,
-        "priority": "high"
+    "name": "Task - 6",
+    "deadline": "31.12.2022",
+    "description": "Description of task 6",
+    "id": "id-6",
+    "completed": false,
+    "priority": "middle"
     }
-]
+    ]

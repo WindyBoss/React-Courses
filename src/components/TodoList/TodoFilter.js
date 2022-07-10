@@ -6,7 +6,7 @@ const TodoFilter = ({ value, onChange, colors }) => {
             <FilterText>Task Filter:</FilterText>
             <input type="text"
                 value={value}
-                //  value={"Text"} => put word "Text" unchangable inside input
+                //  value={"Text"} => put word "Text" unchangeable inside input
                 onChange={onChange}
                 placeholder="add filter"
             />

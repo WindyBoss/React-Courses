@@ -142,7 +142,7 @@ class TodoList extends Component {
                             completed={completed}
                             priority={priority}
                             deleteTask={ this.deleteTask }
-                            toggleCompleted={this.toggleCompleted} // -> callback does not work with this, so callback will show underfine for this.props
+                            toggleCompleted={this.toggleCompleted} // -> callback does not work with this, so callback will show undefined for this.props
                             // so it is better to make the next code this.toggleCompleted.bind(this) => because function must know, to which object must to connected => 
                             // use bind in constructor, because it will optimize speed of webpage, by decreasing times of callbacks re-rendering
                             colors={colors}

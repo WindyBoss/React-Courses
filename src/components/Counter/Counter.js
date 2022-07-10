@@ -21,10 +21,10 @@ class Counter extends Component {
     };
 
     /*
-    * The next suntax function cannot use 'this'
+    * The next syntax function cannot use 'this'
     handleIncrement() {
     console.log('click in Up button');
-    console.log(this); -> will show underfine
+    console.log(this); -> will show undefined
     };
     * But the next one can
     */
@@ -42,7 +42,7 @@ class Counter extends Component {
         */
 
 
-        const { target } = e; // -> use desctructurization
+        const { target } = e; // -> use destructuring
         setTimeout(() => {
             console.log(target);
         }, 1000);
