@@ -106,7 +106,14 @@ export const Layout = ({ children }) => {
               Friends
               </ButtonStyled>
               </LinkStyled>
-          </List>              
+          </List>   
+          <List>
+            <LinkStyled style={{textDecoration: 'none'}} to='/react-homework-template/MediaPlayer'>
+              <ButtonStyled type='button' colors={colors}>
+              MediaPlayer
+              </ButtonStyled>
+              </LinkStyled>
+          </List>                       
         {children} 
       </RoutesStyled>
       <Outlet />

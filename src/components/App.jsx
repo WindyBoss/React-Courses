@@ -17,6 +17,7 @@ import { Reader } from '../pages/Reader';
 import { ReaderWithApi } from '../pages/ReaderWithApi';
 import { Pokemon } from '../pages/Pokemon';
 import Friends from 'pages/Friend.jsx';
+import MediaPlayer from '../pages/MediaPlayer';
 
 import SkipEffectOnFirstRender from 'pages/SkipEffectOnFirstRender.jsx';
 
@@ -78,6 +79,7 @@ export default function App () {
                 <Route path="/react-homework-template/Pokemon" element={<Pokemon />} />              
                 <Route path="/react-homework-template/SkipEffectOnFirstRender" element={<SkipEffectOnFirstRender />} />              
                 <Route path="/react-homework-template/Friends" element={<Friends />} />              
+                <Route path="/react-homework-template/MediaPlayer" element={<MediaPlayer source='http://media.w3.org/2010/05/sintel/trailer.mp4' />} />                            
               </Route>
             </Routes>
           </BrowserRouter>
