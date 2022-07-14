@@ -7,7 +7,19 @@ import { useFetch } from '../Hooks/useFetch';
 import ListRender from 'components/ListRender/ListRender';
 
 function AuthorDetailsViewNoState({ apiState }) {
+  
+  /*
+  * The structure of URL line:
+  _______H_O_S_T_____________Static_Params_______Dynamic_Params_____JSON_Expansion_
+  |                     |     |         |            | |            |             |
+  http://localhost:4040/       authors/               1             ?_embed=books
+
+  http://localhost:4040/authors/1?_embed=books
+  */
+
+  // useParams - hook of react-router-dom, which returns all dynamic params as object. For example { authorId: 2, bookSort: 'descending' }
   const { authorId } = useParams();
+  
   const author = useFetch(apiState, getAuthor, authorId);
   return (
     <>
