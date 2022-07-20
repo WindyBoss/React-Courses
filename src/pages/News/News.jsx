@@ -11,6 +11,7 @@ import { NewsContainer } from './styles/News.styled.jsx';
 import { useLocalStorage } from 'hooks';
 
 import { themeContext } from 'context/authContext';
+import { useSearchParams } from 'react-router-dom';
 
 const Status = {
   IDLE: 'idle',
@@ -22,17 +23,14 @@ const Status = {
 export function News() {
   const [articles, setArticles] = useLocalStorage('articles', []);
   const [currentPage, setCurrentPage] = useLocalStorage('currentPage', 1);
-  const [searchQuery, setSearchQuery] = useLocalStorage('searchQuery', '');
   const [status, setStatus] = useState(Status.IDLE);
 
   const { mainTheme } = useContext(themeContext);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     const abortController = new AbortController();
-
-    if (!searchQuery || searchQuery === '') {
-      return;
-    }
 
     function mergeArrayUnique(arr1, arr2) {
       const reduced = arr1.filter(function (obj1) {
@@ -41,10 +39,12 @@ export function News() {
         });
       });
       return reduced.concat(arr2);
-    }
+    };
+
+    const paramsSearch = searchParams.get('search');
 
     const numberedCurrentPage = Number(currentPage);
-    const options = { searchQuery, numberedCurrentPage };
+    const options = { searchQuery: paramsSearch, numberedCurrentPage };
     setStatus(Status.PENDING);
     try {
       fetchArticles(options, abortController).then(articles => {
@@ -59,15 +59,9 @@ export function News() {
     return () => {
       abortController.abort();
     };
-  }, [searchQuery, currentPage, setArticles]);
+  }, [currentPage, setArticles, setSearchParams, searchParams]);
 
   // ! -------------------------------------------- LOCAL STORAGE ---------------------------------
-
-  useEffect(() => {
-    if (searchQuery !== '') {
-      window.localStorage.setItem('searchQuery', JSON.stringify(searchQuery));
-    }
-  }, [searchQuery]);
 
   useEffect(() => {
     if (currentPage !== 1) {
@@ -88,7 +82,7 @@ export function News() {
   };
 
   const onChangeQuery = query => {
-    setSearchQuery(query);
+    setSearchParams({search: query});
     setCurrentPage(1);
     setArticles([]);
   };

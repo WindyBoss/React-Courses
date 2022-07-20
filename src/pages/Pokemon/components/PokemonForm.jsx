@@ -10,7 +10,7 @@ export function PokemonFormHooks({ colors, onSubmit }) {
   const [pokemonNameValid, setPokemonNameValid] = useState(false);
 
   function validatePokemonName(pokemonName) {
-    if (pokemonName.length > 0 && typeof pokemonName === 'string') {
+    if (pokemonName.length > 0 && typeof(pokemonName) === 'string') {
       setPokemonNameValid(true);
       return pokemonName;
     }

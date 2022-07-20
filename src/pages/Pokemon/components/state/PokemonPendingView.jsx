@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PokemonDataView from "./PokemonDataView";
 import { FormWrapper } from '../../styles/Pokemon.styled';
 
-import { LinearProgressStyled } from '../../../../components/CommonComponents';
+import { LinearProgressStyled } from 'components/CommonComponents';
 
 export default function PokemonPendingView({ pokemonName, colors, isPending }) {
 

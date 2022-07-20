@@ -1,21 +1,32 @@
 import { useState, useMemo, useContext } from 'react';
-import { ButtonStyled, TextFieldStyled } from '../../components/CommonComponents';
+import { ButtonStyled, TextFieldStyled } from 'components/CommonComponents';
 import { themeContext } from 'context/authContext';
 
 import FriendList from './components/FriendList';
 
-import allFriends from '../../data/friends.json';
+import allFriends from 'data/friends.json';
+
+import { useSearchParams } from 'react-router-dom';
 
 export function Friends() {
   const [count, setCount] = useState(0);
   const [friends] = useState(allFriends);
-  const [filter, setFilter] = useState('');
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const visibleFriends = useMemo(() => {
+    let filter = '';
+    searchParams.get('filter') ? filter = searchParams.get('filter') : filter = '';
+
     return friends.filter(friend =>
       friend.name.toLowerCase().includes(filter.toLowerCase())
     );
-  }, [filter, friends]);
+  }, [friends, searchParams]);
+
+  const setFiltered = (e) => {
+    const { value } = e.target;
+    value === '' ? setSearchParams() : setSearchParams({ filter: value });
+  }
 
   const { mainTheme } = useContext(themeContext);
 
@@ -43,10 +54,10 @@ export function Friends() {
       >
         <TextFieldStyled
           colors={mainTheme.colors}
-          onChange={e => setFilter(e.target.value)}
+          onChange={setFiltered}
           type="text"
           label="Filter Friends"
-          value={filter}
+          value={searchParams.get('filter') ? searchParams.get('filter') : ''}
         />
         <p style={{ fontSize: '20px' }}>{visibleFriends.length}</p>
       </div>

@@ -6,7 +6,6 @@ import LightModeTwoToneIcon from '@mui/icons-material/LightModeTwoTone';
 import { IconButton } from '@mui/material';
 
 import { ThemeSwitcher } from './AppLayoutStyles.jsx';
-
 import {
   CounterPage,
   SignupForm,
@@ -15,7 +14,7 @@ import {
   News,
   Video,
   Reader,
-  ReaderWithApi,
+  Preview,
   Pokemon,
   Friends,
   MediaPlayer,
@@ -23,6 +22,10 @@ import {
   Tabs,
   TodoList,
   Homepage,
+  ReaderAppbar,
+  ListPage,
+  PublicationList,
+  CreatePublication,
 } from '../pages';
 
 import videos from '../data/video.json';
@@ -33,10 +36,13 @@ import todos from '../data/todos.json';
 import Appbar from './Appbar';
 
 import { GlobalStyle } from './CommonComponents';
-import { themeContext } from '../context/authContext';
+import { themeContext } from 'context/authContext';
+
+import { RedirectContainer } from './RedirectContainer/RedirectContainer.jsx';
 
 export default function App() {
   const { mainTheme, changeTheme } = useContext(themeContext);
+
   return (
     <div>
       <GlobalStyle theme={mainTheme} />
@@ -59,14 +65,56 @@ export default function App() {
             <Route path="Clock" element={<Clock />} />
             <Route path="News" element={<News />} />
             <Route path="Video" element={<Video videos={videos} />} />
-            <Route path="Reader" element={<Reader publications={publications} />} />
-            <Route path="ReaderWithApi" element={<ReaderWithApi />} />
+            <Route
+              path="Reader"
+              element={<Reader publications={publications} />}
+            />
+            <Route path="ReaderWithApi" element={<ReaderAppbar />}>
+              <Route
+                index
+                element={
+                  <RedirectContainer containerText="Choose Preview Button" />
+                }
+              />
+
+              <Route path="preview" element={<Preview />}>
+                <Route path=":publicationId" element={<ListPage />} />
+              </Route>
+              <Route path="list" element={<PublicationList />}>
+                <Route path=":publicationId" element={<ListPage />} />
+              </Route>
+              <Route path="create" element={<CreatePublication />} />
+              <Route
+                path="*"
+                element={
+                  <RedirectContainer containerText="Sorry There is no such way" />
+                }
+              />
+            </Route>
             <Route path="Tabs" element={<Tabs items={tabs} />} />
             <Route path="TodoList" element={<TodoList todos={todos} />} />
             <Route path="Pokemon" element={<Pokemon />} />
-            <Route path="SkipEffectOnFirstRender" element={<SkipEffectOnFirstRender />}/>
+            <Route
+              path="SkipEffectOnFirstRender"
+              element={<SkipEffectOnFirstRender />}
+            />
             <Route path="Friends" element={<Friends />} />
-            <Route path="MediaPlayer" element={<MediaPlayer source="http://media.w3.org/2010/05/sintel/trailer.mp4" />}/>
+            <Route
+              path="MediaPlayer"
+              element={
+                <MediaPlayer source="http://media.w3.org/2010/05/sintel/trailer.mp4" />
+              }
+            />
+            <Route
+              path="*"
+              element={
+                <RedirectContainer
+                  containerText="Sorry There is no such way"
+                  buttonText="To Home Page"
+                  redirectLink="/react-homework-template/"
+                />
+              }
+            />
           </Route>
         </Routes>
       </BrowserRouter>

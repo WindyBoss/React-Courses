@@ -3,9 +3,11 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 
-import { styled } from '@mui/material/styles';
+import { styled as styles }  from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import LinearProgress from '@mui/material/LinearProgress';
+
+import styled from 'styled-components';
 
 
 export const GlobalStyle = createGlobalStyle`
@@ -44,66 +46,76 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const btnStyles = ({btnTextColor, btnBgColor, btnBorderColor, hoverBtnColor, hoverBtnBgColor}, hover) => {
-    return (
-      {
-        color: !hover ? `${btnTextColor}` : `${hoverBtnColor}`, 
-        backgroundColor: !hover ? `${btnBgColor}` : `${hoverBtnBgColor}`,
-        border: `1px solid ${btnBorderColor}`,
-        transform: !hover ? 'scale(1)' : 'scale(1.1)'
-      }
-    );
+export const btnStyles = (
+  { btnTextColor, btnBgColor, btnBorderColor, hoverBtnColor, hoverBtnBgColor },
+  hover
+) => {
+  return {
+    color: !hover ? `${btnTextColor}` : `${hoverBtnColor}`,
+    backgroundColor: !hover ? `${btnBgColor}` : `${hoverBtnBgColor}`,
+    border: `1px solid ${btnBorderColor}`,
+    transform: !hover ? 'scale(1)' : 'scale(1.1)',
+  };
 };
 
-export function ButtonStyled ({
-  children, 
-  onClick, 
-  colors, 
-  endIcon, 
-  type, 
-  disabled, 
-  btnBgColor, 
-  addFeat
+export function ButtonStyled({
+  children,
+  onClick,
+  colors,
+  endIcon,
+  type,
+  disabled,
+  btnBgColor,
+  addFeat,
 }) {
-   const [hover, setHover] = useState(false);  
-   return (
+  const [hover, setHover] = useState(false);
+  return (
     <Button
-      style={ btnBgColor ? {...addFeat, ...btnStyles(colors, hover), color: btnBgColor, backgroundColor: '#b2b276'} : {...addFeat, ...btnStyles(colors, hover)}}
-      onPointerOver={()=> setHover(true)}
+      style={
+        btnBgColor
+          ? {
+              ...addFeat,
+              ...btnStyles(colors, hover),
+              color: btnBgColor,
+              backgroundColor: '#b2b276',
+            }
+          : { ...addFeat, ...btnStyles(colors, hover) }
+      }
+      onPointerOver={() => setHover(true)}
       onPointerOut={() => setHover(false)}
       onClick={onClick ?? onClick}
-      variant="contained" 
+      variant="contained"
       type={type}
       endIcon={endIcon}
       disabled={disabled}
     >
       {children}
     </Button>
-  )
-};
+  );
+}
 
 ButtonStyled.propTypes = {
   children: PropTypes.node.isRequired,
-  onClick: PropTypes.func, 
-  colors: PropTypes.objectOf(PropTypes.string).isRequired, 
+  onClick: PropTypes.func,
+  colors: PropTypes.objectOf(PropTypes.string).isRequired,
   endIcon: PropTypes.object,
-  type: PropTypes.string, 
-  disabled: PropTypes.bool, 
-  btnBgColor: PropTypes.string, 
+  type: PropTypes.string,
+  disabled: PropTypes.bool,
+  btnBgColor: PropTypes.string,
   addFeat: PropTypes.any,
 };
 
-export function TextFieldStyled ({ 
-  value, 
-  onChange, 
-  colors, 
-  label, 
-  variant, 
-  size, 
-  type, 
+export function TextFieldStyled({
+  value,
+  onChange,
+  colors,
+  label,
+  variant,
+  size,
+  type,
   id,
   addFeat,
-  name 
+  name,
 }) {
   return (
     <CssTextField
@@ -116,23 +128,23 @@ export function TextFieldStyled ({
       onChange={onChange}
       colors={colors}
       name={name}
-      style={{marginRight: '20px', ...addFeat}}
+      style={{ marginRight: '20px', ...addFeat }}
     />
-  )
-};
+  );
+}
 
 TextFieldStyled.propTypes = {
-  value: PropTypes.string, 
-  onChange: PropTypes.func, 
-  colors: PropTypes.objectOf(PropTypes.string).isRequired, 
-  label: PropTypes.string, 
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  colors: PropTypes.objectOf(PropTypes.string).isRequired,
+  label: PropTypes.string,
   variant: PropTypes.string,
-  size: PropTypes.string, 
-  type: PropTypes.string, 
+  size: PropTypes.string,
+  type: PropTypes.string,
   id: PropTypes.string,
 };
 
-const CssTextField = styled(TextField)(({ colors, addFeat }) => ({ 
+const CssTextField = styles(TextField)(({ colors, addFeat }) => ({
   '& label.Mui-focused': {
     color: colors.hoverBtnBgColor,
   },
@@ -152,22 +164,69 @@ const CssTextField = styled(TextField)(({ colors, addFeat }) => ({
     },
     '&.Mui-focused': {
       color: colors.hoverBtnBgColor,
-    
+
       '& fieldset': {
-      borderColor: colors.hoverBtnBgColor,
-      ...addFeat,
+        borderColor: colors.hoverBtnBgColor,
+        ...addFeat,
+      },
     },
-}}}));
+  },
+}));
 
-const CssProgressBar = styled(LinearProgress)(({colors}) => {
-  return ({
-   '& .MuiLinearProgress-bar': {
-    backgroundColor: colors.btnBgColor,
-   }
-})});
+const CssProgressBar = styles(LinearProgress)(({ colors }) => {
+  return {
+    '& .MuiLinearProgress-bar': {
+      backgroundColor: colors.btnBgColor,
+    },
+  };
+});
 
-export const LinearProgressStyled = ({colors, addFeat}) => {
-    return (<CssProgressBar colors={colors} style={{ 
-      backgroundColor: colors.hoverBtnBgColor, ...addFeat
-    }} />)
-}
+export const LinearProgressStyled = ({ colors, addFeat }) => {
+  return (
+    <CssProgressBar
+      colors={colors}
+      style={{
+        backgroundColor: colors.hoverBtnBgColor,
+        ...addFeat,
+      }}
+    />
+  );
+};
+
+const ErrorContainerStyled = {
+  marginRight: 'auto',
+  marginLeft: 'auto',
+  fontSize: '24px',
+  fontWeight: 'bold',
+};
+
+export const ErrorContainer = ({ text }) => {
+  return (
+    <div style={ErrorContainerStyled}>
+      <h2>{text}</h2>
+    </div>
+  );
+};
+
+
+
+
+export const HomepageContainer = styled.div`
+padding: 8px;
+margin-top: 20px;
+border-radius: 8px;
+color: #fff;
+font-size: 40px;
+font-weight: 500;
+text-align: center;
+
+
+color: ${props => props.colors.mainText};
+background-image: ${props => `repeating-linear-gradient(
+    -45deg,
+    ${props.colors.btnBgColor},
+    ${props.colors.btnBgColor} 15px,
+    ${props.colors.containerBgColor} 15px,
+    ${props.colors.containerBgColor} 30px
+  )`};
+`;

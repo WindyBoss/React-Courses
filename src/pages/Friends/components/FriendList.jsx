@@ -8,11 +8,11 @@ export default function FriendList({ visibleFriends }) {
   return (
     <ul
       style={{
-        border: `1px solid ${mainTheme.colors.containerBorderColor}`,
         padding: '20px',
         margin: '20px',
         display: 'inline-flex',
         flexWrap: 'wrap',
+        minWidth: '100%',
       }}
     >
       {visibleFriends.map((friend, idx) => (
@@ -23,7 +23,7 @@ export default function FriendList({ visibleFriends }) {
             display: 'inline-flex',
             color: mainTheme.colors.mainText,
             border: `1px solid ${mainTheme.colors.containerBorderColor}`,
-            width: '20%',
+            minWidth: '20%',
             padding: '10px',
           }}
         >

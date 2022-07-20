@@ -1,48 +1,49 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { Controls } from '../common/components/Controls';
-import { Progress } from '../common/components/Progress';
-import { TextWrapper } from '../common/components/TextWrapper';
+import { Controls } from '../../common/components/Controls';
+import { Progress } from '../../common/components/Progress';
+import { TextWrapper } from '../../common/components/TextWrapper';
 
 import { themeContext } from 'context/authContext';
-
-const LS_KEY_Hooks = 'reader_Hooks';
+import { useSearchParams } from 'react-router-dom';
 
 export const Reader = ({ publications }) => {
   const { mainTheme } = useContext(themeContext);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [index, setIndex] = useState(() => {
-    return localStorage.getItem(LS_KEY_Hooks)
-      ? Number(localStorage.getItem(LS_KEY_Hooks))
-      : 0;
-  });
+  const publicationId = searchParams.get('id');
+  const publicationIdParsed = parseInt(publicationId);
 
   const changeIndex = value => {
     const publicationNumber = publications.length;
-    switch (index + value) {
+
+    switch (publicationIdParsed + value) {
       case publicationNumber:
-        setIndex(0);
+        setSearchParams({ id: 0 });
         break;
       case -1:
-        setIndex(publicationNumber - 1);
+        setSearchParams({ id: publicationNumber - 1 });
         break;
       default:
-        setIndex(prevState => prevState + value);
+        setSearchParams({ id: publicationIdParsed + value });
     }
   };
 
   useEffect(() => {
-    localStorage.setItem(LS_KEY_Hooks, Number(index));
-  }, [index]);
+    isNaN(publicationIdParsed) ? setSearchParams({ id: 0 }) :
+    setSearchParams({ id: publicationIdParsed });
+  }, [publicationIdParsed, setSearchParams]);
 
-  const currentPublication = publications[index];
+  const currentPublication = !isNaN(publicationIdParsed)
+    ? publications[publicationIdParsed]
+    : publications[0];
 
   return (
     <ProgressContainer
       onClick={changeIndex}
       colors={mainTheme.colors}
-      currentIndex={index}
+      currentIndex={publicationIdParsed}
       currentPublication={currentPublication}
       totalPublications={publications.length}
     />

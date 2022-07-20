@@ -1,16 +1,9 @@
-function fetchPokemon(name, abortController) {
-    return fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {signal: abortController.signal})
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        };
-  
-        return Promise.reject(
-          new Error(`Everything went wrong, no pokemon with name "${name}"`),
-        );
-      });
-  };
-  
+import axios from 'axios';
+
+const fetchPokemon = async (name, abortController) => {
+  return await (await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`, { signal: abortController})).data;
+}
+
 export const pokeApi = {
     fetchPokemon
 };

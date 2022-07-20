@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.headers.common['Authorization'] = 'Bearer 4330ebfabc654a6992c2aa792f3173a3'; // axios blobal setups
+axios.defaults.headers.common['Authorization'] = 'Bearer 4330ebfabc654a6992c2aa792f3173a3'; // axios global setups
 
 export const fetchArticles = ({ searchQuery = '', numberedCurrentPage = 1, pageSize = 5 }, abortController) => {
   return axios

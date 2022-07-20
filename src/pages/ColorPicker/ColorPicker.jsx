@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import PropTypes from 'prop-types';
 import ButtonList from './components/ButtonList';
 import { themeContext } from 'context/authContext';
 
@@ -43,8 +42,4 @@ export function ColorPicker() {
       <ButtonList options={options} setActiveIdx={setActiveOptionIndex} />
     </>
   );
-}
-
-ColorPicker.propTypes = {
-  options: PropTypes.array.isRequired,
 };
