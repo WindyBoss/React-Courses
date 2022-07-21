@@ -6,7 +6,7 @@ import { PokemonContainer } from './styles/Pokemon.styled';
 import { themeContext } from 'context/authContext';
 import { useSearchParams } from 'react-router-dom';
 
-export function Pokemon() {
+ function Pokemon() {
 
   const { mainTheme } = useContext(themeContext);
 
@@ -24,4 +24,6 @@ export function Pokemon() {
       />
     </PokemonContainer>
   );
-}
+};
+
+export default Pokemon;

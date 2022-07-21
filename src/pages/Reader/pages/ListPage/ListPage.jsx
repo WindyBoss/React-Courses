@@ -15,12 +15,12 @@ import { useParams } from 'react-router-dom';
 import { themeContext } from 'context/authContext';
 import { withApiState } from 'services/ApiState';
 
-export const ListPageNoState = ({ apiState }) => {
+const ListPageNoState = ({ apiState }) => {
   const { mainTheme } = useContext(themeContext);
 
   let { publicationId } = useParams();
 
-  const { state } = useFetch({
+  const { state } = useFetch({ // custom hooks for fetch requests
     fetchFunc: getPublication,
     apiState: apiState,
     firstRenderCheck: false,
@@ -63,7 +63,7 @@ export const ListPageNoState = ({ apiState }) => {
   );
 };
 
-export const ListPage = withApiState(ListPageNoState);
+const ListPage = withApiState(ListPageNoState);
 
 const ContainerStyle = {
   position: 'fixed',
@@ -71,3 +71,5 @@ const ContainerStyle = {
   right: '50px',
   minWidth: '1000px',
 };
+
+export default ListPage;

@@ -6,10 +6,11 @@ import PersonIcon from '@mui/icons-material/Person';
 import { themeContext, authContext } from '../../context/authContext';
 import { ButtonStyled, TextFieldStyled } from 'components/CommonComponents';
 
-
 export default function Appbar() {
   const { user, isLoggedIn, onLogIn, onLogOut, setUser } =
     useContext(authContext);
+
+
   const { mainTheme } = useContext(themeContext);
 
   return (

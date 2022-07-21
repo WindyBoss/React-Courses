@@ -10,7 +10,7 @@ import {
   MainContainer,
 } from './styles/Counter.styled';
 
-export function CounterHooks() {
+function CounterHooks() {
   const { mainTheme } = useContext(themeContext);
 
   const [counterA, setCounterA] = useState(0);
@@ -51,7 +51,7 @@ export function CounterHooks() {
   );
 }
 
-export function CounterPage() {
+function CounterPage() {
   const { mainTheme } = useContext(themeContext);
 
   return (
@@ -63,3 +63,5 @@ export function CounterPage() {
     </MainContainer>
   );
 }
+
+export  default CounterPage;

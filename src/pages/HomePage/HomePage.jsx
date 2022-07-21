@@ -4,11 +4,13 @@ import { HomepageContainer } from 'components/CommonComponents';
 
 
 
-export function Homepage () {
+function HomePage () {
     const { mainTheme } = useContext(themeContext);
 
     return (
         <HomepageContainer colors={mainTheme.colors}>This is the home page of React-Router Practice</HomepageContainer>
     )
-}
+};
+
+export default HomePage;
 

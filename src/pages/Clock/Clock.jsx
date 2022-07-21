@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Clocki } from './components/Clocki';
 
-export function Clock() {
+function Clock() {
   const [time, setTime] = useState(() => new Date());
 
   const intervalId = useRef(null);
@@ -28,3 +28,6 @@ export function Clock() {
     <><Clocki time={time} text='Current Time By Hooks' onClick={stop}/></>
   );
 };
+
+
+export default Clock;

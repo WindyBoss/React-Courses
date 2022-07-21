@@ -13,7 +13,7 @@ export const Layout = ({ children }) => {
   return (
     <div>
       <RoutesStyled colors={mainTheme.colors}>
-      <List>
+        <List>
           <LinkStyled
             colors={mainTheme.colors}
             style={{ textDecoration: 'none' }}

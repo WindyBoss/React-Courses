@@ -14,7 +14,7 @@ const options = [
   { label: 'orange', color: 'orange' },
 ];
 
-export function ColorPicker() {
+function ColorPicker() {
   const [activeOptionIndex, setActiveOptionIndex] = useState(0);
   const { label } = options[activeOptionIndex];
 
@@ -43,3 +43,5 @@ export function ColorPicker() {
     </>
   );
 };
+
+export default ColorPicker;

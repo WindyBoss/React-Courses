@@ -16,7 +16,7 @@ import CreateTwoToneIcon from '@mui/icons-material/CreateTwoTone';
 
 import { useModal } from 'hooks';
 
-export function TodoList ({todos}) {
+function TodoList ({todos}) {
   const localStorageKey = 'todos';
   const diffKey = 'diff';
   const [allTodos, setAllTodos] = useState([]);
@@ -161,3 +161,6 @@ TodoList.propTypes = {
     priority: PropTypes.string.isRequired,
   })).isRequired,
 };
+
+
+export default TodoList;

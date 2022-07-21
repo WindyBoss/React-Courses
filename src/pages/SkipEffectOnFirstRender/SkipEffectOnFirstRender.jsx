@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useContext } from 'react';
 import { themeContext } from 'context/authContext';
 import { ButtonStyled } from 'components/CommonComponents';
 
-export function SkipEffectOnFirstRender() {
+function SkipEffectOnFirstRender() {
   const [count, setCount] = useState(0);
   const isFirstRender = useRef(true);
 
@@ -51,4 +51,6 @@ export function SkipEffectOnFirstRender() {
       </p>
     </div>
   );
-}
+};
+
+export default SkipEffectOnFirstRender;

@@ -8,7 +8,7 @@ import allFriends from 'data/friends.json';
 
 import { useSearchParams } from 'react-router-dom';
 
-export function Friends() {
+function Friends() {
   const [count, setCount] = useState(0);
   const [friends] = useState(allFriends);
 
@@ -65,3 +65,5 @@ export function Friends() {
     </div>
   );
 }
+
+export default Friends;

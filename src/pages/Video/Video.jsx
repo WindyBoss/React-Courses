@@ -10,7 +10,7 @@ import {
   PlayerWrapper,
 } from './styles/Player.styled';
 
-export function Video({ videos }) {
+function Video({ videos }) {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const { mainTheme } = useContext(themeContext);
 
@@ -37,3 +37,5 @@ Video.propTypes = {
     })
   ).isRequired,
 };
+
+export default Video;

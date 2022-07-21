@@ -33,6 +33,7 @@ export const Battery = () => {
 
   useEffect(() => {
     const checkBattery = () => {
+      // The next code helps to check the battery level & charging status
       navigator.getBattery().then(function (battery) {
         setIsCharging(battery.charging);
         setBatteryLevel(battery.level);
@@ -48,6 +49,7 @@ export const Battery = () => {
     batteryLevelText.current.style.color = color;
   };
 
+  // The component is built on the base of replacing of the icons according to the conditions.
 
   return (
     <div

@@ -31,7 +31,7 @@ SignupFormHooks.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-export const SignupForm = () => {
+const SignupForm = () => {
   const { mainTheme } = useContext(themeContext);
 
   const [userList, setUserList] = useState([]);
@@ -90,3 +90,6 @@ export const SignupForm = () => {
     </>
   );
 };
+
+
+export default SignupForm;

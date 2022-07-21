@@ -8,7 +8,7 @@ import {
 import { ButtonStyled } from 'components/CommonComponents';
 import PropTypes from 'prop-types';
 
-export function Tabs({ items }) {
+function Tabs({ items }) {
   const [activeTabIdx, setActiveTabIdx] = useState(0);
 
   const { mainTheme } = useContext(themeContext);
@@ -45,3 +45,5 @@ Tabs.propTypes = {
     })
   ).isRequired,
 };
+
+export default Tabs;

@@ -20,7 +20,7 @@ const Status = {
   RESOLVED: 'resolved',
 };
 
-export function News() {
+function News() {
   const [articles, setArticles] = useLocalStorage('articles', []);
   const [currentPage, setCurrentPage] = useLocalStorage('currentPage', 1);
   const [status, setStatus] = useState(Status.IDLE);
@@ -106,4 +106,7 @@ export function News() {
       {status === 'pending' && <Pending />}
     </NewsContainer>
   );
-}
+};
+
+
+export default News;

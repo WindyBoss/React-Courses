@@ -8,11 +8,13 @@ import { TextWrapper } from '../../common/components/TextWrapper';
 import { themeContext } from 'context/authContext';
 import { useSearchParams } from 'react-router-dom';
 
-export const Reader = ({ publications }) => {
+const Reader = ({ publications }) => {
   const { mainTheme } = useContext(themeContext);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const publicationId = searchParams.get('id');
+  const publicationId = searchParams.get('id'); 
+  // Search Params is used for recording the searching or filter query, 
+  // which helps users to shares links with already made search or filter  
   const publicationIdParsed = parseInt(publicationId);
 
   const changeIndex = value => {
@@ -89,3 +91,6 @@ const ProgressContainer = ({
     </>
   );
 };
+
+
+export default Reader;

@@ -18,13 +18,13 @@ import { withApiState } from 'services/ApiState';
 
 import { useNavigate } from 'react-router-dom';
 
-export const CreatePublicationNoState = ({ apiState }) => {
+const CreatePublicationNoState = ({ apiState }) => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
 
   const { mainTheme } = useContext(themeContext);
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // hook of react router dom, which replace useHistory and help to navigate user
 
   const setField = e => {
     const value = e.target.value.trim(' ');
@@ -69,7 +69,7 @@ export const CreatePublicationNoState = ({ apiState }) => {
 
     setText('');
     setTitle('');
-    navigate('/react-homework-template/ReaderWithApi/preview')
+    navigate('/react-homework-template/ReaderWithApi/preview'); // - helps to navigate user to necessary page
   };
 
   return (
@@ -142,4 +142,6 @@ export const CreatePublicationNoState = ({ apiState }) => {
   );
 };
 
-export const CreatePublication = withApiState(CreatePublicationNoState);
+const CreatePublication = withApiState(CreatePublicationNoState);
+
+export default CreatePublication;

@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
-import { Preview } from '../Preview/Preview';
+import Preview from '../Preview';
 
 import { deletePublications } from 'services/readerApi';
 
 import { useFetch } from 'hooks';
 import { withApiState } from 'services/ApiState';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-export const List = ({ apiState }) => {
+const List = ({ apiState }) => {
   const [publicationId, setPublicationId] = useState(0);
+
+  const location = useLocation(); // - hook which returns object with url features (pathName, searchParams, hashes, etc...)
+  console.log(location);
 
   const takeId = id => {
     setPublicationId(id);
-    navigate('/react-homework-template/ReaderWithApi/list')
+    navigate(-1)
     toast.success('Publication has been deleted');
   };
 
@@ -35,4 +38,6 @@ export const List = ({ apiState }) => {
   );
 };
 
-export const PublicationList = withApiState(List);
+const PublicationList = withApiState(List);
+
+export default PublicationList;

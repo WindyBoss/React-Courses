@@ -3,7 +3,7 @@ import { useRef, useContext } from 'react';
 import { ButtonStyled } from 'components/CommonComponents';
 import { themeContext } from 'context/authContext';
 
-export const MediaPlayer = ({ source }) => {
+const MediaPlayer = ({ source }) => {
   const playerRef = useRef();
   const play = () => playerRef.current.play();
   const pause = () => playerRef.current.pause();
@@ -57,3 +57,5 @@ const btnStyles = {
   fontSize: '20px',
   padding: '10px 20px, 10px, 20px',
 };
+
+export default MediaPlayer;

@@ -1,31 +1,24 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Outlet, useSearchParams } from 'react-router-dom';
-import { StyledSelect } from '../../common/styles/Reader.styled';
-
-import {
-  InputLabel,
-  MenuItem,
-  ListSubheader,
-  FormControl,
-} from '@mui/material';
 
 import {
   ButtonStyled,
-  TextFieldStyled,
   ErrorContainer,
   LinearProgressStyled,
 } from 'components/CommonComponents';
+
+import { FormMenu } from './FormMenu';
 
 import { themeContext } from 'context/authContext';
 
 import * as API from 'services/readerApi';
 import { withApiState } from 'services/ApiState';
-import { SortAndFilter, StyledNavLink } from '../../common/styles/Reader.styled';
+import { StyledNavLink } from '../../common/styles/Reader.styled';
 import { useFetch } from 'hooks';
 
 const ReaderHooks = ({ apiState, onClick, newState }) => {
   const { mainTheme } = useContext(themeContext);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams(); // - hook the help to control search params (add, delete or change)
 
   const { state } = useFetch({
     fetchFunc: API.getPublications,
@@ -135,94 +128,10 @@ const ReaderHooks = ({ apiState, onClick, newState }) => {
 
       {apiState.isSuccess() && (
         <>
-          <SortAndFilter>
-            <FormControl
-              sx={{ m: 1, minWidth: 120 }}
-              color={mainTheme.id === 'dark' ? 'secondary' : 'primary'}
-            >
-              <InputLabel
-                color={mainTheme.id === 'dark' ? 'secondary' : 'primary'}
-                htmlFor="grouped-select"
-                sx={{ color: mainTheme.colors.btnBgColor }}
-              >
-                Sort by
-              </InputLabel>
-              <StyledSelect
-                defaultValue=""
-                id="grouped-select"
-                onChange={sortPublication}
-                label="Sort by"
-                colors={mainTheme.colors}
-              >
-                <MenuItem
-                  style={{
-                    color: mainTheme.colors.mainText,
-                    backgroundColor: mainTheme.colors.reverseBtnBorderColor,
-                  }}
-                  value=""
-                >
-                  <em>None</em>
-                </MenuItem>
-                <ListSubheader
-                  sx={{
-                    color: mainTheme.colors.mainText,
-                    backgroundColor: mainTheme.colors.btnBgColor,
-                  }}
-                >
-                  Alphabet
-                </ListSubheader>
-                <MenuItem
-                  sx={{
-                    color: mainTheme.colors.mainText,
-                    backgroundColor: mainTheme.colors.reverseBtnBorderColor,
-                  }}
-                  value="alphabetDesc"
-                >
-                  Descending
-                </MenuItem>
-                <MenuItem
-                  sx={{
-                    color: mainTheme.colors.mainText,
-                    backgroundColor: mainTheme.colors.reverseBtnBorderColor,
-                  }}
-                  value="alphabetAsc"
-                >
-                  Ascending
-                </MenuItem>
-                <ListSubheader
-                  sx={{
-                    color: mainTheme.colors.mainText,
-                    backgroundColor: mainTheme.colors.btnBgColor,
-                  }}
-                >
-                  Publication Length
-                </ListSubheader>
-                <MenuItem
-                  sx={{
-                    color: mainTheme.colors.mainText,
-                    backgroundColor: mainTheme.colors.reverseBtnBorderColor,
-                  }}
-                  value="LengthDesc"
-                >
-                  Descending
-                </MenuItem>
-                <MenuItem
-                  sx={{
-                    color: mainTheme.colors.mainText,
-                    backgroundColor: mainTheme.colors.reverseBtnBorderColor,
-                  }}
-                  value="LengthAsc"
-                >
-                  Ascending
-                </MenuItem>
-              </StyledSelect>
-            </FormControl>
-            <TextFieldStyled
-              onChange={filterPublication}
-              colors={mainTheme.colors}
-              label="filter"
-            />
-          </SortAndFilter>
+          <FormMenu
+            sortPublication={sortPublication}
+            filterPublication={filterPublication}
+          />
 
           <ul style={{ display: 'flex', flexDirection: 'column' }}>
             {articles.map(item => (
@@ -263,12 +172,14 @@ const ReaderHooks = ({ apiState, onClick, newState }) => {
   );
 };
 
-export const ReaderHooksWrapper = withApiState(ReaderHooks);
+const ReaderHooksWrapper = withApiState(ReaderHooks);
 
-export const Preview = ({ onClick, newState }) => {
+const Preview = ({ onClick, newState }) => {
   return (
     <div style={{ position: 'relative' }}>
       <ReaderHooksWrapper onClick={onClick} newState={newState} />
     </div>
   );
 };
+
+export default Preview;
