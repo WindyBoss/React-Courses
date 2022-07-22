@@ -11,10 +11,7 @@ export default function AppBar() {
   * or can navigate to specific url with or without replacing component
   */
   const navigate = useNavigate();
-
   const location = useLocation();
-  console.log(location?.state?.from);
-  console.log(location);
 
   const returnLocation =  location?.state?.from ? `${location?.state?.from.pathname}${location?.state?.from.search}` : -1
 
