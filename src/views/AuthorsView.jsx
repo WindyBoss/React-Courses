@@ -20,4 +20,5 @@ function AuthorsViewNoState({ apiState }) {
   );
 }
 
-export const AuthorsView = withApiState(AuthorsViewNoState);
+const AuthorsView = withApiState(AuthorsViewNoState);
+export default AuthorsView;

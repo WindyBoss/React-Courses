@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router';
 import { Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import { Navigation, AppBarContainer, NavLink } from './Appbar.styled';
 
@@ -12,11 +12,17 @@ export default function AppBar() {
   */
   const navigate = useNavigate();
 
+  const location = useLocation();
+  console.log(location?.state?.from);
+  console.log(location);
+
+  const returnLocation =  location?.state?.from ? `${location?.state?.from.pathname}${location?.state?.from.search}` : -1
+
   return (
     <>
       <AppBarContainer>
         <Navigation>
-          <Button sx={{fontWeight: 'bold'}} onClick={() => navigate(-1)}>
+          <Button sx={{fontWeight: 'bold'}} onClick={() => navigate(returnLocation)}>
             Go Back
           </Button>
           {/* NavLink - component of react-router-dom lib, which is similar to tag a, but without page reload and with possibility to style it (Link -cannot be styled)*/}

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import { withApiState } from 'services/ApiState';
 import { useFetch } from '../../src/Hooks/useFetch';
@@ -10,6 +10,18 @@ import BookView from 'components/BookView';
 
 function BookDetailsViewNoState({ apiState }) {
   const book = useFetch(apiState, getBook, useParams().bookId);
+  const location = useLocation();
+
+  /* Chaining operator 
+  -- console.log(location?.state?.from) 
+
+  the same as:
+
+  -- if(location && location.state && location.state.from) {
+        console.log(location.state.from)
+     }
+  */
+  console.log(location?.state?.from);
 
   return (
     <>
@@ -24,4 +36,5 @@ function BookDetailsViewNoState({ apiState }) {
   );
 }
 
-export const BookDetailsView = withApiState(BookDetailsViewNoState);
+const BookDetailsView = withApiState(BookDetailsViewNoState);
+export default BookDetailsView;

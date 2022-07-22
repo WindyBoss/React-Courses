@@ -1,7 +1,7 @@
 import React from 'react';
 import PageHeading from 'components/PageHeading';
 
-export function HomeView() {
+function HomeView() {
   return (
     <>
       <PageHeading text="Home Page" />
@@ -63,3 +63,6 @@ export function HomeView() {
     </>
   );
 }
+
+
+export default HomeView;

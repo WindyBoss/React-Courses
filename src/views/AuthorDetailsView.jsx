@@ -19,8 +19,8 @@ function AuthorDetailsViewNoState({ apiState }) {
 
   // useParams - hook of react-router-dom, which returns all dynamic params as object. For example { authorId: 2, bookSort: 'descending' }
   const { authorId } = useParams();
-  
-  const author = useFetch(apiState, getAuthor, authorId);
+  const author = useFetch(apiState, getAuthor, authorId); 
+
   return (
     <>
       {author && (
@@ -34,5 +34,6 @@ function AuthorDetailsViewNoState({ apiState }) {
     </>
   );
 }
+const AuthorDetailsView = withApiState(AuthorDetailsViewNoState);
 
-export const AuthorDetailsView = withApiState(AuthorDetailsViewNoState);
+export default AuthorDetailsView;
