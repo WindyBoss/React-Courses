@@ -10,17 +10,17 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const List = ({ apiState }) => {
   const [publicationId, setPublicationId] = useState(0);
+  const navigate = useNavigate();
 
   const location = useLocation(); // - hook which returns object with url features (pathName, searchParams, hashes, etc...)
   console.log(location);
 
   const takeId = id => {
     setPublicationId(id);
-    navigate(-1)
+    navigate(-1);
     toast.success('Publication has been deleted');
   };
 
-  const navigate = useNavigate();
 
   const { state } = useFetch({
     fetchFunc: deletePublications,
