@@ -20,7 +20,7 @@ export function App() {
       Routes - react-router-dom v6 component, which was Switch is v5, the main goal of each is checking if the Route path matches with navigation until first match.
       After first match it will show the Route of the first match (similar to switch in JS)
       */}
-      <Suspense fallback={<Pending/>}>
+      <Suspense fallback={<Pending />}>
         <Routes>
           {/* Route - react-router-dom component, the main of each is to create the route to component, which must be rendered on specific URL*/}
 
@@ -34,7 +34,7 @@ export function App() {
               element={<AuthorsView />}
             >
               <Route
-                path="/react-homework-template/authors/:authorId"
+                path="/react-homework-template/authors/:slugAuthors"
                 element={<AuthorDetailsView />}
               />
             </Route>
@@ -45,7 +45,7 @@ export function App() {
               element={<BooksView />}
             />
             <Route
-              path="/react-homework-template/books/:bookId"
+              path="/react-homework-template/books/:slug"
               element={<BookDetailsView />}
             />
             <Route path="*" element={<NotFoundView />}></Route>

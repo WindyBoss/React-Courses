@@ -1,7 +1,6 @@
-import { useLocation, useParams } from 'react-router-dom';
-
 import { withApiState } from 'services/ApiState';
-import { useFetch } from '../../src/Hooks/useFetch';
+import { useFetch } from 'Hooks/useFetch';
+import { useSlug } from 'Hooks/useSlug';
 import { getBook } from 'services/FetchApi';
 
 import PageHeading from 'components/PageHeading';
@@ -9,8 +8,8 @@ import Pending from 'components/Pending';
 import BookView from 'components/BookView';
 
 function BookDetailsViewNoState({ apiState }) {
-  const book = useFetch(apiState, getBook, useParams().bookId);
-  const location = useLocation();
+  // useSlug - custom hook, which returns slugged data from URL params, in which was written the title of book or the name of author
+  const book = useFetch(apiState, getBook, useSlug('slug'));
 
   /* Chaining operator 
   -- console.log(location?.state?.from) 
@@ -21,7 +20,6 @@ function BookDetailsViewNoState({ apiState }) {
         console.log(location.state.from)
      }
   */
-  console.log(location?.state?.from);
 
   return (
     <>

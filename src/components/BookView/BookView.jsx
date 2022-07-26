@@ -1,5 +1,8 @@
 import React from 'react';
-import { Container, InfoContainer, TextDescr, Image } from './BookView.styled';
+import { Container, InfoContainer, TextDescr } from './BookView.styled';
+
+import { useReplaceImage } from 'Hooks/useReplaceImage';
+import replaceImage from 'images/replace_book.jpeg';
 
 export default function BookDetailsView({ children, book }) {
   const { imgUrl, title, descr, genre, author } = book;
@@ -9,7 +12,11 @@ export default function BookDetailsView({ children, book }) {
       {children}
 
       <Container>
-        <Image src={imgUrl} alt={title} />
+        {useReplaceImage({
+          src: imgUrl,
+          fallback: replaceImage,
+          props: { alt: title, width: 300 },
+        })}
         <InfoContainer>
           <p>
             <TextDescr>Genre: </TextDescr>
