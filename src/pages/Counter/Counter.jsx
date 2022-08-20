@@ -1,67 +1,41 @@
-import React, { useState, useContext } from 'react';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import { themeContext } from 'context/authContext';
-import { ButtonStyled } from 'components/CommonComponents';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeValue } from 'redux/counter/counterSlice';
 
-import {
-  CounterContainer,
-  BtnContainer,
-  TotalClickCounter,
-  MainContainer,
-} from './styles/Counter.styled';
+import { ButtonStyled, TextFieldStyled } from 'components/CommonComponents';
+import { themeContext } from 'context/themeContext';
+import { useContext } from 'react';
+import { useState } from 'react';
 
-function CounterHooks() {
+export default function Counter() {
   const { mainTheme } = useContext(themeContext);
+  const count = useSelector(state => state.counter.value);
+  const dispatch = useDispatch();
 
-  const [counterA, setCounterA] = useState(0);
-  const [counterB, setCounterB] = useState(0);
-
-  const handleCounterAIncrement = () => {
-    setCounterA(prevCounterA => prevCounterA + 1);
-  };
-
-  const handleCounterBIncrement = () => {
-    setCounterB(prevCounterB => prevCounterB + 1);
-  };
-
-  const totalClick = counterB + counterA;
+  const [changeNumber, setChangeNumber] = useState(1);
 
   return (
-    <BtnContainer colors={mainTheme.colors}>
+    <div>
       <ButtonStyled
         colors={mainTheme.colors}
-        endIcon={<ArrowUpwardIcon />}
-        type="button"
-        onClick={handleCounterAIncrement}
+        onClick={() => dispatch(changeValue(changeNumber))}
       >
-        Counter A {counterA} Clicks
+        Increase
       </ButtonStyled>
-      <TotalClickCounter colors={mainTheme.colors}>
-        {totalClick}
-      </TotalClickCounter>
+      <span style={{ fontSize: '25px', margin: '30px' }}>{count}</span>
       <ButtonStyled
         colors={mainTheme.colors}
-        endIcon={<ArrowUpwardIcon />}
-        type="button"
-        onClick={handleCounterBIncrement}
+        onClick={() => dispatch(changeValue(-changeNumber))}
       >
-        Counter B {counterB} Clicks
+        Decrease
       </ButtonStyled>
-    </BtnContainer>
+      <TextFieldStyled
+        colors={mainTheme.colors}
+        size="large"
+        type="number"
+        value={changeNumber}
+        onChange={e => setChangeNumber(Number(e.target.value))}
+      />
+    </div>
   );
 }
-
-function CounterPage() {
-  const { mainTheme } = useContext(themeContext);
-
-  return (
-    <MainContainer>
-      <CounterContainer colors={mainTheme.colors}>
-        <p>CounterHooks</p>
-        <CounterHooks />
-      </CounterContainer>
-    </MainContainer>
-  );
-}
-
-export  default CounterPage;

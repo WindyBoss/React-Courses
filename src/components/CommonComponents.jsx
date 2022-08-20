@@ -3,12 +3,11 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 
-import { styled as styles }  from '@mui/material/styles';
+import { styled as styles } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import LinearProgress from '@mui/material/LinearProgress';
 
 import styled from 'styled-components';
-
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -134,7 +133,7 @@ export function TextFieldStyled({
 }
 
 TextFieldStyled.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.any,
   onChange: PropTypes.func,
   colors: PropTypes.objectOf(PropTypes.string).isRequired,
   label: PropTypes.string,
@@ -208,21 +207,17 @@ export const ErrorContainer = ({ text }) => {
   );
 };
 
-
-
-
 export const HomepageContainer = styled.div`
-padding: 8px;
-margin-top: 20px;
-border-radius: 8px;
-color: #fff;
-font-size: 40px;
-font-weight: 500;
-text-align: center;
+  padding: 8px;
+  margin-top: 20px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
 
-
-color: ${props => props.colors.mainText};
-background-image: ${props => `repeating-linear-gradient(
+  color: ${props => props.colors.mainText};
+  background-image: ${props => `repeating-linear-gradient(
     -45deg,
     ${props.colors.btnBgColor},
     ${props.colors.btnBgColor} 15px,
