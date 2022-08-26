@@ -1,3 +1,11 @@
+# Module 6 - React-Router-Dom-Practice 
+
+- React.lazy() & Suspense
+- useSearchParams for searching + filtering & useLocation
+- SPA page structure 
+- Closer meeting with MUI Library
+- Deep Routing structure
+
 # ReactJS course
 
 **Welcome to my github page ReactJS course.** Probably you are the HR worker, so here you can
@@ -12,5 +20,6 @@ see all my way of studying ReactJS, but if you are anyone else, you are also wel
 4. [Module 4 - React Fetch-API](https://github.com/WindyBoss/React-Courses/tree/Module-4-Fetch-API)
 5. [Module 5 - React Hooks First Lesson](https://github.com/WindyBoss/React-Courses/tree/Module-5-Hooks-useState-UseEffect-useContext)
 6. [Module 6 - React-Router-Dom](https://github.com/WindyBoss/React-Courses/tree/Module-6-React-Routes-Dom)
+7. [Module 6 - React-Router-Dom-Practice](https://github.com/WindyBoss/React-Courses/tree/Module-6-React-Router-Dom-Practice)
 
-More deep infomation you can find inside each of higher mentioned branches.
+More deep information you can find inside each of higher mentioned branches.
