@@ -19,8 +19,8 @@ root.render(
         <Provider store={store}>
           <App />
           <Toaster />
-        </Provider>{' '}
-      </ApolloProvider>{' '}
-    </PersistGate>{' '}
+        </Provider>
+      </ApolloProvider>
+    </PersistGate>
   </React.StrictMode>
 );
