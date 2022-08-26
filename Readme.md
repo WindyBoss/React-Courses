@@ -20,6 +20,8 @@ see all my way of studying ReactJS, but if you are anyone else, you are also wel
 4. [Module 4 - React Fetch-API](https://github.com/WindyBoss/React-Courses/tree/Module-4-Fetch-API)
 5. [Module 5 - React Hooks First Lesson](https://github.com/WindyBoss/React-Courses/tree/Module-5-Hooks-useState-UseEffect-useContext)
 6. [Module 6 - React-Router-Dom](https://github.com/WindyBoss/React-Courses/tree/Module-6-React-Routes-Dom)
-
+7. [Module 6 - React-Router-Dom-Practice](https://github.com/WindyBoss/React-Courses/tree/Module-6-React-Router-Dom-Practice)
+8. [Module 7 - Redux-Hook-RTK-Query](https://github.com/WindyBoss/React-Courses/tree/Module-7-Redux-Hook-RTK-Query)
+9. [Module 7 - Redux-Class-Components](https://github.com/WindyBoss/React-Courses/tree/Module-7-Redux-Class-Components)
 
 More deep infomation you can find inside each of higher mentioned branches.
