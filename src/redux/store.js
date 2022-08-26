@@ -1,8 +1,8 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-// import todoReducer from './todos/todoSlice';
-import { todoReducer, loading } from './todos/todoReducer';
-import counterReducer from './counter/counterSlice';
-import storage from 'reduxjs-toolkit-persist/lib/storage'; // defaults to localStorage for web
+/** @format */
+
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import logger from "redux-logger";
+import storage from "reduxjs-toolkit-persist/lib/storage";
 import {
     persistReducer,
     persistStore,
@@ -12,42 +12,36 @@ import {
     PERSIST,
     PURGE,
     REGISTER,
-} from 'reduxjs-toolkit-persist';
+} from "reduxjs-toolkit-persist";
 
-// import { todoReducer } from './todos/todoReducer';
+import currencyReducer from "./currency/currencySlice";
+import cartReducer from "./cart/cartSlice";
 
-import logger from 'redux-logger';
-
-const persistConfig = {
-    key: 'root',
+const persistConfigCurrency = {
+    key: "currency",
     storage: storage,
 };
 
-const persistClickConfig = {
-    key: 'clicks',
+const persistConfigCart = {
+    key: "cart",
     storage: storage,
 };
 
 const rootReducer = combineReducers({
-    todoList: persistReducer(persistConfig, todoReducer),
-    counter: persistReducer(persistClickConfig, counterReducer),
-    loading: loading,
+    currency: persistReducer(persistConfigCurrency, currencyReducer),
+    cart: persistReducer(persistConfigCart, cartReducer),
 });
 
 const store = configureStore({
     reducer: rootReducer,
-    middleware: getDefaultMiddleware =>
+    middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {
                 /* ignore persistance actions */
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
         }).concat(logger),
-    devTools: process.env.NODE_ENV !== 'production',
-    enhancers: defaultEnhancers => {
-        console.log(defaultEnhancers);
-        return defaultEnhancers;
-    },
+    devTools: process.env.NODE_ENV !== "production",
 });
 
 const persistor = persistStore(store);
