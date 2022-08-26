@@ -12,22 +12,15 @@ import { client } from './service/apolloClient';
 import { store, persistor } from 'redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render( <
-    React.StrictMode >
-    <
-    PersistGate loading = { 'loading...' }
-    persistor = { persistor } >
-    <
-    ApolloProvider client = { client } >
-    <
-    Provider store = { store } >
-    <
-    App / >
-    <
-    Toaster / >
-    <
-    /Provider> <
-    /ApolloProvider> <
-    /PersistGate> <
-    /React.StrictMode>
+root.render(
+  <React.StrictMode>
+    <PersistGate loading={'loading...'} persistor={persistor}>
+      <ApolloProvider client={client}>
+        <Provider store={store}>
+          <App />
+          <Toaster />
+        </Provider>{' '}
+      </ApolloProvider>{' '}
+    </PersistGate>{' '}
+  </React.StrictMode>
 );
