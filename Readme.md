@@ -30,5 +30,6 @@ see all my way of studying ReactJS, but if you are anyone else, you are also wel
 7. [Module 6 - React-Router-Dom-Practice](https://github.com/WindyBoss/React-Courses/tree/Module-6-React-Router-Dom-Practice)
 8. [Module 7 - Redux-Hook-RTK-Query](https://github.com/WindyBoss/React-Courses/tree/Module-7-Redux-Hook-RTK-Query)
 9. [Module 7 - Redux-Class-Components](https://github.com/WindyBoss/React-Courses/tree/Module-7-Redux-Class-Components)
+10. [Module 7 - Redux-Async-Thunk](https://github.com/WindyBoss/React-Courses/tree/Module-7-Redux-Async-Thunk)
 
-More deep infomation you can find inside each of higher mentioned branches.
+More deep information you can find inside each of higher mentioned branches.
