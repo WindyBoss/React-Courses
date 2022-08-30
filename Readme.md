@@ -1,4 +1,9 @@
-# ReactJS course
+# Module-7-Redux-Async-Thunk
+
+- createAsyncThunk
+- addCase
+- preparedFunction
+- global theme and todos
 
 **Welcome to my github page ReactJS course.** Probably you are the HR worker, so here you can
 see all my way of studying ReactJS, but if you are anyone else, you are also welcome to contact with me by email: **zhyryk1997@gmail.com.** 
@@ -13,4 +18,4 @@ see all my way of studying ReactJS, but if you are anyone else, you are also wel
 5. [Module 5 - React Hooks First Lesson](https://github.com/WindyBoss/React-Courses/tree/Module-5-Hooks-useState-UseEffect-useContext)
 6. [Module 6 - React-Router-Dom](https://github.com/WindyBoss/React-Courses/tree/Module-6-React-Routes-Dom)
 
-More deep infomation you can find inside each of higher mentioned branches.
+More deep information you can find inside each of higher mentioned branches.
