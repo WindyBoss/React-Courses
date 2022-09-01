@@ -5,7 +5,7 @@ Module 7 - Redux-Class-Components
 - Persist Redux Toolkit
 - Component Structure
 - Class Components & Router Dom 6
-
+- Redux Selectors
 
 # ReactJS course
 
