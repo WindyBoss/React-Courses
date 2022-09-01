@@ -1,23 +1,24 @@
 /** @format */
-import { PureComponent } from "react";
-import { connect } from "react-redux";
-import { addProduct, deleteProduct, productChange } from "redux/cart/cartSlice";
+import { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { addProduct, deleteProduct, productChange } from 'redux/cart/cartSlice';
 
-import Modal from "./components/Modal";
-import Total from "./components/Total";
-import Product from "../Product";
+import Modal from './components/Modal';
+import Total from './components/Total';
+import Product from '../Product';
 
-import { ProductList, CartTitle } from "./ModalCart.styled";
-
+import { ProductList, CartTitle } from './ModalCart.styled';
+import { getCurrency } from 'redux/currency/currencySelectors';
+import { getCart } from 'redux/cart/cartSelectors';
 class ModalCart extends PureComponent {
   state = {
-    symbol: "",
+    symbol: '',
   };
 
   findPrice(prices) {
     const { currency } = this.props;
 
-    return prices.filter((price) => {
+    return prices.filter(price => {
       return price.currency.symbol === currency.symbol;
     })[0];
   }
@@ -75,10 +76,9 @@ class ModalCart extends PureComponent {
   }
 }
 
-const mapStateToProps = (state) => ({
-  category: state.category,
-  currency: state.currency.currency,
-  cart: state.cart.cart,
+const mapStateToProps = state => ({
+  currency: getCurrency(state),
+  cart: getCart(state),
 });
 
 const mapDispatchToProps = { addProduct, deleteProduct, productChange };

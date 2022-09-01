@@ -1,25 +1,28 @@
 /** @format */
 
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { ProductDataContainer } from "./ProductPage.styled";
-import ImageList from "./components/ImageList";
-import MainImage from "./components/MainImage";
-import InfoContainer from "./components/InfoContainer";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { ProductDataContainer } from './ProductPage.styled';
+import ImageList from './components/ImageList';
+import MainImage from './components/MainImage';
+import InfoContainer from './components/InfoContainer';
 
-import { addProduct } from "redux/cart/cartSlice";
+import { addProduct } from 'redux/cart/cartSlice';
 
-import MainContainer from "components/MainContainer";
-import ErrorBoundary from "components/ErrorBoundary";
+import MainContainer from 'components/MainContainer';
+import ErrorBoundary from 'components/ErrorBoundary';
 
-import { getProduct } from "service/apolloClient";
+import { getProduct } from 'service/apolloClient';
 
-import withRouter from "helpers/withRouter";
+import withRouter from 'helpers/withRouter';
+
+import { getCurrency } from 'redux/currency/currencySelectors';
+import { getCart } from 'redux/cart/cartSelectors';
 
 class ProductPage extends Component {
   state = {
     productData: null,
-    chosenImage: "",
+    chosenImage: '',
     error: false,
   };
 
@@ -54,7 +57,7 @@ class ProductPage extends Component {
             <MainImage image={chosenImage} alt={productData.name} />
             <InfoContainer
               product={productData}
-              currency={currency.currency}
+              currency={currency}
               onClick={addProduct}
             />
           </ProductDataContainer>
@@ -66,10 +69,10 @@ class ProductPage extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    currency: state.currency,
-    cart: state.cart,
+    currency: getCurrency(state),
+    cart: getCart(state),
   };
 };
 

@@ -9,13 +9,15 @@ import { connect } from 'react-redux';
 import MainHeader from './components/MainHeader';
 
 import ErrorBoundary from 'components/ErrorBoundary';
+import { getCurrency } from 'redux/currency/currencySelectors';
+import { getCart } from 'redux/cart/cartSelectors';
 
 class AppBar extends Component {
   state = {
     categories: [],
     currencies: [],
     isOpen: false,
-    chosenCurrency: this.props.currency.currency,
+    chosenCurrency: this.props.currency,
     cartShown: false,
     error: false,
   };
@@ -32,8 +34,8 @@ class AppBar extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const currentCurrency = this.props.currency.currency;
-    const prevCurrency = prevProps.currency.currency;
+    const currentCurrency = this.props.currency;
+    const prevCurrency = prevProps.currency;
 
     if (prevCurrency.symbol !== currentCurrency.symbol) {
       this.setState({ chosenCurrency: currentCurrency });
@@ -91,8 +93,8 @@ class AppBar extends Component {
 */
 
 const mapStateToProps = state => ({
-  currency: state.currency,
-  cart: state.cart.cart,
+  currency: getCurrency(state),
+  cart: getCart(state),
 });
 
 const mapDispatchToProps = { setCurrency };

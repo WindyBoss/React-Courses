@@ -1,15 +1,17 @@
 /** @format */
 
-import { Component } from "react";
+import { Component } from 'react';
 
-import { connect } from "react-redux";
-import { addProduct, deleteProduct, productChange } from "redux/cart/cartSlice";
+import { connect } from 'react-redux';
+import { addProduct, deleteProduct, productChange } from 'redux/cart/cartSlice';
 
-import Product from "components/Product";
-import MainContainer from "components/MainContainer";
+import Product from 'components/Product';
+import MainContainer from 'components/MainContainer';
 
-import { CartTitle } from "./Cart.styled";
-import CartTotal from "./components/CartTotal";
+import { CartTitle } from './Cart.styled';
+import CartTotal from './components/CartTotal';
+import { getCart } from 'redux/cart/cartSelectors';
+import { getCurrency } from 'redux/currency/currencySelectors';
 
 class Cart extends Component {
   countTotal() {
@@ -27,14 +29,14 @@ class Cart extends Component {
   findPrice(prices) {
     const { currency } = this.props;
 
-    return prices.filter((price) => {
+    return prices.filter(price => {
       return price.currency.symbol === currency.symbol;
     })[0];
   }
 
   filterAttributions(item, attribute, chosenAttributes) {
     return chosenAttributes.filter(
-      (attr) => attr.value === item.value && attr.name === attribute.name
+      attr => attr.value === item.value && attr.name === attribute.name
     );
   }
 
@@ -76,9 +78,9 @@ class Cart extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  currency: state.currency.currency,
-  cart: state.cart.cart,
+const mapStateToProps = state => ({
+  currency: getCurrency(state),
+  cart: getCart(state),
 });
 
 const mapDispatchToProps = { addProduct, deleteProduct, productChange };

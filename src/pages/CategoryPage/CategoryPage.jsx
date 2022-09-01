@@ -1,17 +1,19 @@
 /** @format */
 
-import React, { PureComponent } from "react";
-import { connect } from "react-redux";
-import { Outlet } from "react-router-dom";
-import withRouter from "helpers/withRouter";
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import { Outlet } from 'react-router-dom';
+import withRouter from 'helpers/withRouter';
 
-import { getCategory } from "service/apolloClient";
+import { getCategory } from 'service/apolloClient';
 
-import MainContainer from "components/MainContainer";
-import ErrorBoundary from "components/ErrorBoundary";
+import MainContainer from 'components/MainContainer';
+import ErrorBoundary from 'components/ErrorBoundary';
 
-import { CategoryTitle } from "./CategoryPage.styled";
-import ProductList from "./components/ProductList";
+import { CategoryTitle } from './CategoryPage.styled';
+import ProductList from './components/ProductList';
+
+import { getCurrency } from 'redux/currency/currencySelectors';
 class CategoryPage extends PureComponent {
   state = {
     chosenCategory: null,
@@ -65,9 +67,9 @@ class CategoryPage extends PureComponent {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    currency: state.currency.currency,
+    currency: getCurrency(state),
   };
 };
 
