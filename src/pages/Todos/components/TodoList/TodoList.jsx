@@ -7,7 +7,7 @@ import SdCardAlertTwoToneIcon from '@mui/icons-material/SdCardAlertTwoTone';
 import { useSelector, useDispatch } from 'react-redux';
 import { showTheme } from 'redux/theme/themeSlice';
 
-import { toggleComplete, deleteTodo } from 'redux/todo/todoSlice';
+import { todoOperations } from 'redux/todo';
 
 import {
   TextContainer,
@@ -66,7 +66,7 @@ export default function TodoList({ todos }) {
               </TextContainer>
               <ButtonContainer>
                 <ButtonStyled
-                  onClick={() => dispatch(deleteTodo(id))}
+                  onClick={() => dispatch(todoOperations.deleteTodo(id))}
                   colors={colors}
                   endIcon={<DeleteForeverTwoToneIcon />}
                   addFeat={{ minWidth: '240px', margin: '5px' }}
@@ -78,7 +78,12 @@ export default function TodoList({ todos }) {
                   colors={colors}
                   addFeat={{ minWidth: '240px', margin: '5px' }}
                   onClick={() =>
-                    dispatch(toggleComplete({ ...todo, completed: !completed }))
+                    dispatch(
+                      todoOperations.toggleComplete({
+                        ...todo,
+                        completed: !completed,
+                      })
+                    )
                   }
                   endIcon={
                     !completed ? (

@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
 import { showTheme } from 'redux/theme/themeSlice';
 
-import { addNewTodo } from 'redux/todo/todoSlice';
+import { todoOperations } from 'redux/todo';
 
 import ButtonStyled from 'components/ButtonStyled';
 
@@ -59,7 +59,7 @@ export default function TodoForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(addNewTodo(values));
+    dispatch(todoOperations.addNewTodo(values));
     resetForm();
     notify();
   };

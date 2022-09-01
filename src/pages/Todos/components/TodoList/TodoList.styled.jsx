@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 export const TextContainer = styled.div`
   display: inline-block;
   margin-right: 20px;

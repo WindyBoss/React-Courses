@@ -4,25 +4,21 @@ import { useEffect } from 'react';
 import TodoList from './components/TodoList';
 import Pending from 'components/Pending';
 import FailedMessage from 'components/FailedMessage';
+import TodoTotal from './components/TodoTotal';
 
-import {
-  selectAllTodos,
-  getTodoStatus,
-  getTodoError,
-  fetchTodos,
-} from 'redux/todo/todoSlice';
+import { todoSelectors, todoOperations } from 'redux/todo';
 
 export default function Todos() {
   const dispatch = useDispatch();
 
-  const todos = useSelector(selectAllTodos);
-  const todoStatus = useSelector(getTodoStatus);
-  const error = useSelector(getTodoError);
+  const todos = useSelector(todoSelectors.getVisibleTodos);
+  const todoStatus = useSelector(todoSelectors.getTodoStatus);
+  const error = useSelector(todoSelectors.getTodoError);
 
   useEffect(() => {
     if (todoStatus === 'idle') {
       // Here is used the asyncThunk function with useDispatch hook
-      dispatch(fetchTodos());
+      dispatch(todoOperations.fetchTodos());
     }
   }, [todoStatus, dispatch, todos]);
 
@@ -34,7 +30,12 @@ export default function Todos() {
   } else if (todoStatus === 'loading') {
     context = <Pending />;
   } else if (todoStatus === 'succeeded' && todoStatus.length > 0) {
-    context = <TodoList todos={todos} />;
+    context = (
+      <>
+        <TodoTotal />
+        <TodoList todos={todos} />
+      </>
+    );
   } else if (todoStatus === 'failed') {
     context = <FailedMessage error={error} />;
   }
