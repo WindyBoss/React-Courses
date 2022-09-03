@@ -1,16 +1,10 @@
-# Module 6 - React-Router-Dom
+# Module 7 - React-State-Normalize
 
-- SPA Concept (Single Page Application), based on Router DOM v6
-- URL Line Structure
-- Components BrowserRouter & Route
-- Error 404 with useNavigate()
-- Component Routes (Switch)
-- Component Link & NavLink with styled-components
-- Component Outlet
-- Custom hooks useFetch() & useDebounced()
-- useParams()
-- useLocation()
-- React.lazy()
+- createAsyncThunk
+- createEntityAdapter
+- createEntityAdapter.getSelectors
+- createEntityAdapter.createSelector
+- createEntityAdapter.[Selectors()]
 
 # ReactJS course
 
@@ -30,5 +24,6 @@ see all my way of studying ReactJS, but if you are anyone else, you are also wel
 8. [Module 7 - Redux-Hook-RTK-Query](https://github.com/WindyBoss/React-Courses/tree/Module-7-Redux-Hook-RTK-Query)
 9. [Module 7 - Redux-Class-Components](https://github.com/WindyBoss/React-Courses/tree/Module-7-Redux-Class-Components)
 10. [Module 7 - Redux-Async-Thunk](https://github.com/WindyBoss/React-Courses/tree/Module-7-Redux-Async-Thunk)
+11. [Module 7 - Redux-State-Normalize](https://github.com/WindyBoss/React-Courses/tree/Module-7-Redux-State-Normalize)
 
 More deep information you can find inside each of higher mentioned branches.
