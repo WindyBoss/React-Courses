@@ -1,10 +1,24 @@
+# Module 6 - React-Router-Dom
+
+- SPA Concept (Single Page Application), based on Router DOM v6
+- URL Line Structure
+- Components BrowserRouter & Route
+- Error 404 with useNavigate()
+- Component Routes (Switch)
+- Component Link & NavLink with styled-components
+- Component Outlet
+- Custom hooks useFetch() & useDebounced()
+- useParams()
+- useLocation()
+- React.lazy()
+
 # ReactJS course
 
 **Welcome to my github page ReactJS course.** Probably you are the HR worker, so here you can
 see all my way of studying ReactJS, but if you are anyone else, you are also welcome to contact with me by email: **zhyryk1997@gmail.com.** 
 **You can find the whole notes, which I made during the course - enjoy.**
 
-## Agenda of Courses
+## Agenda
 
 1. [Module 1 - React Styles](https://github.com/WindyBoss/React-Courses/tree/Module-1-Styles)
 2. [Module 2 - React State](github.com/WindyBoss/React-Courses/tree/Module-2-State)
