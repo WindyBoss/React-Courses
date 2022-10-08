@@ -21,6 +21,6 @@ see all my way of studying ReactJS, but if you are anyone else, you are also wel
 9. [Module 7 - Redux-Class-Components](https://github.com/WindyBoss/React-Courses/tree/Module-7-Redux-Class-Components)
 10. [Module 7 - Redux-Async-Thunk](https://github.com/WindyBoss/React-Courses/tree/Module-7-Redux-Async-Thunk)
 11. [Module 8 - Redux User Profile Management](https://github.com/WindyBoss/React-Courses/blob/Module-8-Redux-UserProfile-Management)
-12. [Module 9 - React Storybook] (https://github.com/WindyBoss/React-Courses/blob/Module-9-React-Storybook)
+12. [Module 9 - React Storybook](https://github.com/WindyBoss/React-Courses/blob/Module-9-React-Storybook)
 
 More deep information you can find inside each of higher mentioned branches.
