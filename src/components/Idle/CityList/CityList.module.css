@@ -1,0 +1,31 @@
+.cityList {
+  display: inline-block;
+  padding: 10px;
+  margin-right: 10%;
+  font-family: Radio Canada;
+
+  color: #5534A5
+}
+
+.cityList h3 {
+  font-size: 30px;
+}
+
+.cityListItem {
+  list-style: none;
+  font-size: 20px;
+
+  margin: 10px;
+  padding: 10px;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  background-color: rgba(85,52,165, 0.2);
+  border-radius: 6px;
+}
+
+.cityListItem:hover,
+.cityListItem:focus {
+  transform: scale(1.2);
+}

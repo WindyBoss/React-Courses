@@ -1,0 +1,9 @@
+.tooltipContainer {
+  background-color: #4B7BE5;
+  padding: 20px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #000000;
+  border-radius: 4px;
+
+}
