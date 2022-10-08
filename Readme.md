@@ -13,7 +13,7 @@ see all my way of studying ReactJS, but if you are anyone else, you are also wel
 ## Agenda of Courses
 
 1. [Module 1 - React Styles](https://github.com/WindyBoss/React-Courses/tree/Module-1-Styles)
-2. [Module 2 - React State](github.com/WindyBoss/React-Courses/tree/Module-2-State)
+2. [Module 2 - React State](https://github.com/WindyBoss/React-Courses/tree/Module-2-State)
 3. [Module 3 - React Component Lifestyle](https://github.com/WindyBoss/React-Courses/tree/Module-3-component-lifestyle)
 4. [Module 4 - React Fetch-API](https://github.com/WindyBoss/React-Courses/tree/Module-4-Fetch-API)
 5. [Module 5 - React Hooks First Lesson](https://github.com/WindyBoss/React-Courses/tree/Module-5-Hooks-useState-UseEffect-useContext)
@@ -24,6 +24,6 @@ see all my way of studying ReactJS, but if you are anyone else, you are also wel
 10. [Module 7 - Redux-Async-Thunk](https://github.com/WindyBoss/React-Courses/tree/Module-7-Redux-Async-Thunk)
 11. [Module 7 - Redux-State-Normalize](https://github.com/WindyBoss/React-Courses/tree/Module-7-Redux-State-Normalize)
 12. [Module 8 - Redux User Profile Management](https://github.com/WindyBoss/React-Courses/tree/Module-8-Redux-UserProfile-Management)
-13. [Module 9 - React Storybook](https://github.com/WindyBoss/React-Courses/blob/Module-9-React-Storybook)
+13. [Module 9 - React Storybook](https://github.com/WindyBoss/React-Courses/tree/Module-9-React-Storybook)
 
 More deep information you can find inside each of higher mentioned branches.
